@@ -32,7 +32,10 @@ public class RegularActivities
     }
     public setActivity() { 
     }
+
     public void printDetails() { 
+        Get activityName, distance, calories 
+        print "Activity details: " + activityName + distance + calories
     } 
     */
 }

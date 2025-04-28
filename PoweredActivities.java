@@ -33,6 +33,8 @@ public class PoweredActivities extends Equipment
     public void getEquipment() { 
     }
     public void printDetails() { 
+        Get activityName, distance, calories 
+        print "Activity details: " + activityName + distance + calories
     } 
     */
 }
