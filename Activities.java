@@ -8,7 +8,13 @@
 public class Activities
 {
     // instance variables - replace the example below with your own
-    private int x;
+    private Mode mode;
+    public enum Mode {
+        WALKING, 
+        RUNNING, 
+        BIKING, 
+        SWMMING
+    }
 
     /**
      * Constructor for objects of class Activities
@@ -16,7 +22,7 @@ public class Activities
     public Activities()
     {
         // initialise instance variables
-        x = 0;
+    
     }
 
     /**
@@ -25,9 +31,38 @@ public class Activities
      * @param  y  a sample parameter for a method
      * @return    the sum of x and y
      */
-    public int sampleMethod(int y)
+   /* public String activityName()
     {
         // put your code here
-        return x + y;
+        return;
+
+    }
+    */
+    /** 
+     * Displays all items in the given list.
+     * If the list is empty, a message indicating that there are no items
+     * is shown. Otherwise, it goes through each item in the list and prints
+     * its details to the user. This method can be used for displaying all
+     * athletes, activities, or equipment depending on the list passed in.
+     * 
+     */
+    public void listAll(){
+        
+    }
+   /* public int setTotalDistance() {
+        
+        return
+    }
+    */
+    
+   /**
+    * Sets the transportation mode for the activity.
+    * Accepts only predefined constant modes.
+    * Prints an error message if an invalid mode is given.
+    */
+    public void setMode(){
+        this.mode = mode;
+       
+        
     }
 }
