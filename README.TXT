@@ -4,9 +4,9 @@ Tell the reader (someone who does not know anything about this project)
 all they need to know. The comments should usually include at least:
 ------------------------------------------------------------------------
 
-PROJECT TITLE:
-PURPOSE OF PROJECT:
+PROJECT TITLE: Final Project 28/04/2025
+PURPOSE OF PROJECT: The purpose of this project developping a social network application for athletes.
 VERSION or DATE:
-HOW TO START THIS PROJECT:
-AUTHORS:
-USER INSTRUCTIONS:
+HOW TO START THIS PROJECT: [To be discussed]
+AUTHORS: Thomas, Esther, Joeffrey
+USER INSTRUCTIONS: This project is licensed under the Apache 2.0
