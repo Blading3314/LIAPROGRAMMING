@@ -20,14 +20,15 @@ public class Feed extends Athletes
     }
 
     /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+     * Prints all activities in a list
      */
-   /* public void listActivities(int y)
+   /* public void listActivities()
     {
-        // put your code here
+        /*
+            get ArrayList<Activities> activityName 
+            for every string activity in activityName
+            print activity
+        */
         
     }
     */
