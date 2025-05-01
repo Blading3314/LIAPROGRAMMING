@@ -1,4 +1,4 @@
-
+import java.util.*;
 /**
  * Write a description of class Athletes here.
  *
@@ -8,33 +8,58 @@
 public class Athletes
 {
     // instance variables
-   private String gender;
    private int calories;
    private int distance;
-   
+   private Gender gender;
    /**
      * Constructor for objects of class Athletes
      */
-    public Athletes()
+    public Athletes(Gender gender)
     {
-   
+       
     }
-    
-   /* public String setGender()
+
+   public String setGender(String gender)
     {
-        // put your code here
-        return  setGender(); 
+       return gender;
     }
-    
-    public int calculateDistance() { 
-        return
-    } 
-    public int setBurnedCalories(){ 
-        return
-    } 
-    public String getActivity() { 
-        return 
-    } hello
-    */
    
+   public int calculateDistance(){
+        return distance;
+    } 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+
 }
