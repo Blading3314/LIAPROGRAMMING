@@ -5,26 +5,21 @@
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Athletes extends Activities
+public class Athletes
 {
-    // instance variables - replace the example below with your own
-    private int x;
-
-    /**
+    // instance variables
+   private String gender;
+   private int calories;
+   private int distance;
+   
+   /**
      * Constructor for objects of class Athletes
      */
     public Athletes()
     {
-        // initialise instance variables
-        x = 0;
+   
     }
-
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
+    
    /* public String setGender()
     {
         // put your code here
