@@ -28,7 +28,7 @@ public class Feed
    public void listActivities()
     {
         for(Activities activity : activities) {
-            activity.listAll();
+            activity.getDetails();
             System.out.println();   // empty line between posts
         }
         /*

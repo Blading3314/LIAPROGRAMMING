@@ -13,9 +13,9 @@ public class Athletes
    private String lastName;
    private Gender gender;
    private int yearOfBirth;
-   private int calories;
+   private int caloriesLost;
    private int distance;
-   private Activities activity;
+   private Activities activities;
    /**
      * Constructor for objects of class Athletes
      */
@@ -36,13 +36,14 @@ public class Athletes
         this.gender = gender;
     } 
    
-   public int calculateDistance(){
-        return distance;
+   public void setDistance(int distance){
+        this.distance = distance;
     } 
 
-   /*public int calculateBurnedCalories(){
-        calories = distance * activityCalories
-    }*/  
+   public int calculateBurnedCalories(){
+        caloriesLost = distance * activities.getCaloriesPerDistance();
+        return caloriesLost;
+    }  
     
     
     

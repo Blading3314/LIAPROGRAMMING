@@ -1,4 +1,4 @@
-
+import java.util.HashMap;
 /**
  * Write a description of class Activities here.
  *
@@ -10,15 +10,21 @@ public class Activities
     // instance variables - replace the example below with your own
     protected TransportMode mode;
     protected String activity;
-    protected int calories;
+    protected int caloriesPerDistance;
 
     /**
      * Constructor for objects of class Activities
      */
-    public Activities(String activityName, TransportMode mode)
+    public Activities(String activityName, TransportMode mode, int calories)
     {
         activity = activityName;
         this.mode = mode;
+        caloriesPerDistance = calories;
+    }
+    
+    public int getCaloriesPerDistance()
+    {
+        return caloriesPerDistance;
     }
 
     /**
@@ -42,7 +48,7 @@ public class Activities
      * athletes, activities, or equipment depending on the list passed in.
      * 
      */
-    public void listAll()
+    public void getDetails()
     {
         System.out.println(activity);
     }
