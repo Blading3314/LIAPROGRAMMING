@@ -7,22 +7,33 @@ import java.util.*;
  */
 public class Athletes
 {
-    // instance variables
+   // instance variables
+   private int ID; 
+   private String name;
+   private String lastName;
+   private Gender gender;
+   private int yearOfBirth;
    private int calories;
    private int distance;
-   private Gender gender;
    /**
      * Constructor for objects of class Athletes
      */
-    public Athletes(Gender gender)
+    public Athletes(String name, Gender gender, String lastName,int yearOfBirth)
     {
-       
+       this.name = name;
+       this.lastName = lastName;
+       this.yearOfBirth = yearOfBirth;
+       this.gender = gender;
     }
 
-   public String setGender(String gender)
+   public Gender getGender()
     {
        return gender;
     }
+    
+   public void setGender(Gender gender){
+        this.gender = gender;
+    } 
    
    public int calculateDistance(){
         return distance;
