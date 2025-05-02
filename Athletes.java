@@ -15,6 +15,7 @@ public class Athletes
    private int yearOfBirth;
    private int calories;
    private int distance;
+   private Activities activity;
    /**
      * Constructor for objects of class Athletes
      */
@@ -38,9 +39,10 @@ public class Athletes
    public int calculateDistance(){
         return distance;
     } 
-    
-    
-    
+
+   /*public int calculateBurnedCalories(){
+        calories = distance * activityCalories
+    }*/  
     
     
     

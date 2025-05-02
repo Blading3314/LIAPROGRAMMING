@@ -12,7 +12,7 @@ public class PoweredActivities extends Activities
 
     public PoweredActivities()
     {
-        
+                
     }
 
     /**
