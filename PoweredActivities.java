@@ -8,15 +8,11 @@
 public class PoweredActivities extends Activities
 {
     // instance variables - replace the example below with your own
-    private int x;
+    private Equipment equipmentName;
 
-    /**
-     * Constructor for objects of class PoweredActivities
-     */
     public PoweredActivities()
     {
-        // initialise instance variables
-        x = 0;
+        
     }
 
     /**

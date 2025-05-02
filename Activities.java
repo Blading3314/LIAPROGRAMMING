@@ -8,21 +8,16 @@
 public class Activities
 {
     // instance variables - replace the example below with your own
-    private Mode mode;
-    public enum Mode {
-        WALKING, 
-        RUNNING, 
-        BIKING, 
-        SWMMING
-    }
+    protected TransportMode mode;
+    protected String activity;
 
     /**
      * Constructor for objects of class Activities
      */
-    public Activities()
+    public Activities(String activityName, TransportMode mode)
     {
-        // initialise instance variables
-    
+        activity = activityName;
+        this.mode = mode;
     }
 
     /**
