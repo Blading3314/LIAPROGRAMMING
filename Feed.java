@@ -1,4 +1,4 @@
-
+import java.util.ArrayList;
 /**
  * Write a description of class MainApp here.
  *
@@ -7,23 +7,30 @@
  */
 public class Feed
 {
-    // instance variables - replace the example below with your own
-    private int x;
+    private ArrayList<Activities> activities;
 
    /**
      * Constructor for objects of class MainApp
      */
     public Feed()
     {
-        // initialise instance variables
-        x = 0;
+        activities = new ArrayList<>();
+    }
+    
+    public void addActivity(Activities activity)
+    {
+        activities.add(activity);
     }
 
     /**
      * Prints all activities in a list
      */
-   /* public void listActivities()
+   public void listActivities()
     {
+        for(Activities activity : activities) {
+            activity.listAll();
+            System.out.println();   // empty line between posts
+        }
         /*
             get ArrayList<Activities> activityName 
             for every string activity in activityName
@@ -31,3 +38,4 @@ public class Feed
         */
         
     }
+}

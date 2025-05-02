@@ -10,6 +10,7 @@ public class Activities
     // instance variables - replace the example below with your own
     protected TransportMode mode;
     protected String activity;
+    protected int calories;
 
     /**
      * Constructor for objects of class Activities
@@ -41,8 +42,9 @@ public class Activities
      * athletes, activities, or equipment depending on the list passed in.
      * 
      */
-    public void listAll(){
-        
+    public void listAll()
+    {
+        System.out.println(activity);
     }
    /* public int setTotalDistance() {
         

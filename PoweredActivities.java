@@ -5,12 +5,12 @@
  * @author (your name)
  * @version (a version number or a date)
  */
-public class PoweredActivities extends Activities
+public class PoweredActivities
 {
     // instance variables - replace the example below with your own
     private Equipment equipmentName;
 
-    public PoweredActivities()
+    public PoweredActivities(String acitivity)
     {
         
     }
