@@ -1,15 +1,14 @@
 #BlueJ class context
 comment0.target=Activities
 comment0.text=\r\n\ Write\ a\ description\ of\ class\ Activities\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-comment1.params=activityName\ mode\ calories
-comment1.target=Activities(java.lang.String,\ TransportMode,\ int)
+comment1.params=activityName\ mode\ caloriesPerDistance\ distance
+comment1.target=Activities(java.lang.String,\ TransportMode,\ int,\ int)
 comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Activities\r\n
 comment2.params=
 comment2.target=int\ getCaloriesPerDistance()
-comment3.params=
-comment3.target=void\ getDetails()
-comment3.text=\ \r\n\ Displays\ all\ items\ in\ the\ given\ list.\r\n\ If\ the\ list\ is\ empty,\ a\ message\ indicating\ that\ there\ are\ no\ items\r\n\ is\ shown.\ Otherwise,\ it\ goes\ through\ each\ item\ in\ the\ list\ and\ prints\r\n\ its\ details\ to\ the\ user.\ This\ method\ can\ be\ used\ for\ displaying\ all\r\n\ athletes,\ activities,\ or\ equipment\ depending\ on\ the\ list\ passed\ in.\r\n\ \r\n
+comment3.params=athlete
+comment3.target=void\ setAthlete(Athletes)
 comment4.params=
-comment4.target=void\ setMode()
-comment4.text=\r\n\ Sets\ the\ transportation\ mode\ for\ the\ activity.\r\n\ Accepts\ only\ predefined\ constant\ modes.\r\n\ Prints\ an\ error\ message\ if\ an\ invalid\ mode\ is\ given.\r\n
+comment4.target=void\ getDetails()
+comment4.text=\ \r\n\ Displays\ all\ items\ in\ the\ given\ list.\r\n\ If\ the\ list\ is\ empty,\ a\ message\ indicating\ that\ there\ are\ no\ items\r\n\ is\ shown.\ Otherwise,\ it\ goes\ through\ each\ item\ in\ the\ list\ and\ prints\r\n\ its\ details\ to\ the\ user.\ This\ method\ can\ be\ used\ for\ displaying\ all\r\n\ athletes,\ activities,\ or\ equipment\ depending\ on\ the\ list\ passed\ in.\r\n\ \r\n
 numComments=5

@@ -1,4 +1,4 @@
-import java.util.HashMap;
+import java.util.ArrayList;
 /**
  * Write a description of class Activities here.
  *
@@ -10,36 +10,33 @@ public class Activities
     // instance variables - replace the example below with your own
     protected TransportMode mode;
     protected String activity;
+    protected int caloriesLost;
     protected int caloriesPerDistance;
-
+    protected int distance;
+    protected ArrayList<Athletes> athletes;
     /**
      * Constructor for objects of class Activities
      */
-    public Activities(String activityName, TransportMode mode, int calories)
+    public Activities(String activityName, TransportMode mode, int caloriesPerDistance, int distance)
     {
         activity = activityName;
         this.mode = mode;
-        caloriesPerDistance = calories;
+        this.caloriesPerDistance = caloriesPerDistance;
+        this.distance = distance;
+        athletes = new ArrayList<>();
     }
     
     public int getCaloriesPerDistance()
     {
-        return caloriesPerDistance;
+        caloriesLost = caloriesPerDistance * distance;
+        return caloriesLost;
     }
-
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-   /* public String activityName()
+    
+    public void setAthlete(Athletes athlete)
     {
-        // put your code here
-        return;
-
+        athletes.add(athlete);
     }
-    */
+    
     /** 
      * Displays all items in the given list.
      * If the list is empty, a message indicating that there are no items
@@ -51,21 +48,5 @@ public class Activities
     public void getDetails()
     {
         System.out.println(activity);
-    }
-   /* public int setTotalDistance() {
-        
-        return
-    }
-    */
-    
-   /**
-    * Sets the transportation mode for the activity.
-    * Accepts only predefined constant modes.
-    * Prints an error message if an invalid mode is given.
-    */
-    public void setMode(){
-        this.mode = mode;
-       
-        
     }
 }
