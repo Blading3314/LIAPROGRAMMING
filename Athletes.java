@@ -17,23 +17,36 @@ public class Athletes
    /**
      * Constructor for objects of class Athletes
      */
-    public Athletes(String name, Gender gender, String lastName,int yearOfBirth)
+    public Athletes(String name,String lastName, Gender gender,int yearOfBirth)
     {
        this.name = name;
        this.lastName = lastName;
        this.yearOfBirth = yearOfBirth;
        this.gender = gender;
     }
-
+   
+   @Override
+   public String toString(){
+        return "Name: " + name + " " + lastName + "\n" + 
+        "Gender: " + gender + "\n" +
+        "Year of birth: " + yearOfBirth;
+    }
+   
    public Gender getGender()
     {
        return gender;
     }
+   
+   public int calculateAge(){
+        int year = 2025;
+        int age = 2025 - yearOfBirth;
+        return age;
+    } 
     
    public void setGender(Gender gender){
         this.gender = gender;
     } 
-
+    
    public int calculateBurnedCalories(Activities activity){
         caloriesBurned = activity.getCaloriesPerDistance();
         return caloriesBurned;

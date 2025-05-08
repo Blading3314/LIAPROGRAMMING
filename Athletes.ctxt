@@ -1,13 +1,17 @@
 #BlueJ class context
 comment0.target=Athletes
 comment0.text=\r\n\ Write\ a\ description\ of\ class\ Athletes\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-comment1.params=name\ gender\ lastName\ yearOfBirth
-comment1.target=Athletes(java.lang.String,\ Gender,\ java.lang.String,\ int)
+comment1.params=name\ lastName\ gender\ yearOfBirth
+comment1.target=Athletes(java.lang.String,\ java.lang.String,\ Gender,\ int)
 comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Athletes\r\n
 comment2.params=
-comment2.target=Gender\ getGender()
-comment3.params=gender
-comment3.target=void\ setGender(Gender)
-comment4.params=activity
-comment4.target=int\ calculateBurnedCalories(Activities)
-numComments=5
+comment2.target=java.lang.String\ toString()
+comment3.params=
+comment3.target=Gender\ getGender()
+comment4.params=
+comment4.target=int\ calculateAge()
+comment5.params=gender
+comment5.target=void\ setGender(Gender)
+comment6.params=activity
+comment6.target=int\ calculateBurnedCalories(Activities)
+numComments=7

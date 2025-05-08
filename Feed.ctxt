@@ -1,12 +1,14 @@
 #BlueJ class context
 comment0.target=Feed
 comment0.text=\r\n\ Write\ a\ description\ of\ class\ MainApp\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-comment1.params=
-comment1.target=Feed()
-comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ MainApp\r\n
-comment2.params=activity
-comment2.target=void\ addActivity(Activities)
-comment3.params=
-comment3.target=void\ listActivities()
-comment3.text=\r\n\ Prints\ all\ activities\ in\ a\ list\r\n
-numComments=4
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+comment2.params=
+comment2.target=Feed()
+comment2.text=\r\n\ Constructor\ for\ objects\ of\ class\ Feed\r\n
+comment3.params=activity
+comment3.target=void\ addActivity(Activities)
+comment4.params=
+comment4.target=void\ listActivities()
+comment4.text=\r\n\ Prints\ all\ activities\ in\ a\ list\r\n
+numComments=5
