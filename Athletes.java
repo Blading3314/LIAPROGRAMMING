@@ -32,6 +32,12 @@ public class Athletes
         "Year of birth: " + yearOfBirth;
     }
    
+   /**public static void listAllAthletes(){
+        for (Athletes allAthletes : allAthletes ){
+            System.out.println(allAthletes);
+        }
+    } */    
+    
    public Gender getGender()
     {
        return gender;

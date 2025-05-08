@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.List;
 /**
  * Write a description of class MainApp here.
  *
@@ -9,7 +10,8 @@ import java.util.Scanner;
 public class Feed
 {
  private ArrayList<Activities> activities;
-   
+ private List<Athletes> allAthletes = new ArrayList<>();  
+ //private static final List<Athletes> allAthletes = new ArrayList<>();
  public static void main(String[] args) {
     int choice;
      
@@ -18,6 +20,7 @@ public class Feed
     System.out.println();
 
     System.out.println("*'*.Menu.*'*");
+    System.out.println("  (0) Exit");
     System.out.println("  (1) Create athlete profile");
     System.out.println("  (2) List all activities");
     System.out.println("  (3) List all athletes");
@@ -50,6 +53,10 @@ public class Feed
             break;
             
         case 2:
+            
+        case 3:
+          
+           
     }
     
     } 
@@ -61,7 +68,9 @@ public class Feed
     {
         activities = new ArrayList<>();
     }
-   
+
+
+    
  public void addActivity(Activities activity)
     {
         activities.add(activity);

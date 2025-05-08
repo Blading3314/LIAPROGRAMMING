@@ -1,6 +1,14 @@
 #BlueJ class context
 comment0.target=PoweredActivities
 comment0.text=\r\n\ Write\ a\ description\ of\ class\ PoweredActivities\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-comment1.params=acitivity
-comment1.target=PoweredActivities(java.lang.String)
-numComments=2
+comment1.params=
+comment1.target=PoweredActivities()
+comment2.params=nameWord
+comment2.target=ValidEquipment\ getNameOfEquipment(java.lang.String)
+comment2.text=\ \r\n\ Find\ the\ ValidEquipment\ associated\ with\ its\ respective\ name/command\ typed\ \r\n\ as\ String.\ Returns\ UNKNOWN\ if\ the\ equipment\ name\ is\ not\ valid.\r\n
+comment3.params=aString
+comment3.target=boolean\ isCommand(java.lang.String)
+comment3.text=\r\n\ Check\ whether\ a\ given\ String\ is\ a\ valid\ name\ of\ equipment.\ \r\n\ @return\ true\ if\ it\ is,\ false\ if\ it\ isn't.\r\n
+comment4.params=
+comment4.target=void\ showALL()
+numComments=5

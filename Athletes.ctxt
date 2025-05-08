@@ -8,6 +8,7 @@ comment2.params=
 comment2.target=java.lang.String\ toString()
 comment3.params=
 comment3.target=Gender\ getGender()
+comment3.text=public\ static\ void\ listAllAthletes(){\r\n\ \ \ \ \ \ \ \ for\ (Athletes\ allAthletes\ \:\ allAthletes\ ){\r\n\ \ \ \ \ \ \ \ \ \ \ \ System.out.println(allAthletes);\r\n\ \ \ \ \ \ \ \ }\r\n}
 comment4.params=
 comment4.target=int\ calculateAge()
 comment5.params=gender
