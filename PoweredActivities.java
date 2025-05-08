@@ -1,3 +1,4 @@
+import java.util.HashMap;
 
 /**
  * Write a description of class PoweredActivities here.
@@ -5,32 +6,53 @@
  * @author (your name)
  * @version (a version number or a date)
  */
-public class PoweredActivities
+public class PoweredActivities 
 {
-    // instance variables - replace the example below with your own
-    private Equipment equipmentName;
-
-    public PoweredActivities(String acitivity)
+    // Mapping between the equipment name and the ValidEquipment
+    // associated with it. 
+    private HashMap <String, ValidEquipment> equipmentName;
+    
+    public PoweredActivities()
     {
-                
+        
+        equipmentName = new HashMap<>();
+        
+        for(ValidEquipment command : ValidEquipment.values()) {
+            if(command != ValidEquipment.UNKNOWN) {
+                equipmentName.put(command.toString(), command);
+            }
+        }
     }
 
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+    /** 
+     * Find the ValidEquipment associated with its respective name/command typed 
+     * as String. Returns UNKNOWN if the equipment name is not valid.
      */
-    /* public String typeOfActivity()
+    public ValidEquipment getNameOfEquipment(String nameWord)
     {
-        // put your code here
-        return typeOfActivity();
+        ValidEquipment name = equipmentName.get(nameWord);
+        if(name != null) {
+            return name;
+        }
+        else {
+            return ValidEquipment.UNKNOWN;
+        }
     }
-    public void getEquipment() { 
+    
+    /**
+     * Check whether a given String is a valid name of equipment. 
+     * @return true if it is, false if it isn't.
+     */
+    public boolean isCommand(String aString)
+    {
+        return equipmentName.containsKey(aString);
     }
-    public void printDetails() { 
-        Get activityName, distance, calories 
-        print "Activity details: " + activityName + distance + calories
-    } 
-    */
-}
+    public void showALL() {
+         System.out.println("Valid equipment names are:\n");
+         for (String command : equipmentName.keySet()) {
+             System.out.println("* "+command + "  \n");
+         }
+         System.out.println(); 
+     }
+    }
+
