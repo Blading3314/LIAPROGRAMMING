@@ -6,15 +6,15 @@ import java.util.HashMap;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class PoweredActivities 
+public class PoweredActivities extends Activities
 {
     // Mapping between the equipment name and the ValidEquipment
     // associated with it. 
     private HashMap <String, ValidEquipment> equipmentName;
     
-    public PoweredActivities()
+    public PoweredActivities(String activityName, TransportMode mode, int caloriesPerDistance, int distance)
     {
-        
+        super(activityName, mode, caloriesPerDistance, distance);
         equipmentName = new HashMap<>();
         
         for(ValidEquipment command : ValidEquipment.values()) {

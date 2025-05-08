@@ -24,7 +24,7 @@ public class Activities
         this.caloriesPerDistance = caloriesPerDistance;
         this.distance = distance;
         athletes = new ArrayList<>();
-    }
+        }
     
     public int getCaloriesPerDistance()
     {
