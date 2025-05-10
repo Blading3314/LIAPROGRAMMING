@@ -7,13 +7,12 @@ import java.util.*;
  */
 public class Athletes
 {
-   // instance variables
-   private int ID; 
    private String name;
    private String lastName;
    private Gender gender;
    private int yearOfBirth;
    private int caloriesBurned;
+   private static List<Athletes> allAthletes = new ArrayList<>(); 
    /**
      * Constructor for objects of class Athletes
      */
@@ -23,31 +22,27 @@ public class Athletes
        this.lastName = lastName;
        this.yearOfBirth = yearOfBirth;
        this.gender = gender;
+       allAthletes.add(this);
     }
    
+   public static void listAllAthletes(){
+        for(Athletes athletes : allAthletes){
+            System.out.println(athletes.name + " " + athletes.lastName);
+        }
+    } 
+    
    @Override
    public String toString(){
         return "Name: " + name + " " + lastName + "\n" + 
         "Gender: " + gender + "\n" +
-        "Year of birth: " + yearOfBirth;
+        "Year of birth: " + yearOfBirth + "\n";
     }
    
-   /**public static void listAllAthletes(){
-        for (Athletes allAthletes : allAthletes ){
-            System.out.println(allAthletes);
-        }
-    } */    
-    
    public Gender getGender()
     {
        return gender;
     }
    
-   public int calculateAge(){
-        int year = 2025;
-        int age = 2025 - yearOfBirth;
-        return age;
-    } 
     
    public void setGender(Gender gender){
         this.gender = gender;

@@ -14,7 +14,11 @@ public class Feed
  //private static final List<Athletes> allAthletes = new ArrayList<>();
  public static void main(String[] args) {
     int choice;
-     
+    
+    new Athletes("John", "Doe", Gender.MALE, 1995);
+    new Athletes("Jane", "Doe", Gender.FEMALE, 1998);
+
+ 
     Scanner mainFeed = new Scanner(System.in);
     System.out.println("Welcome to your new favorite sports app! (๑>؂•̀๑)ᕗ");
     System.out.println();
@@ -26,7 +30,8 @@ public class Feed
     System.out.println("  (3) List all athletes");
     System.out.println("  (4) List activities by mode");
     System.out.println("  (5) Print activity details");
-    System.out.println("  (6) Print athlete details");
+    System.out.println("  (6) Print your details");
+    System.out.println("  (7) Calculate burned calories");
     System.out.println();
     choice = mainFeed.nextInt();
     
@@ -55,8 +60,19 @@ public class Feed
         case 2:
             
         case 3:
-          
-           
+          System.out.println("Here is a list of all athletes: ");
+          Athletes.listAllAthletes();
+          break;
+        
+        case 4:  
+            
+        case 5:
+            
+        case 6:    
+            
+        case 7:
+            System.out.print("Input the activity you've done:");
+          //  Athletes.calculateBurnedCalories();
     }
     
     } 
