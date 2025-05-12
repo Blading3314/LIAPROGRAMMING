@@ -19,8 +19,8 @@ public class Feed
     new Activities("Walking", TransportMode.WALKING, 70, 5 );
     new Activities("Running", TransportMode.RUNNING, 100, 5 );
     new Activities("Biking", TransportMode.BIKING, 15, 5);
-    new Activities("Swimming", TransportMode.SWIMMING, 18, 1);
-    new Activities("Skating", TransportMode.SKATING, 10, 5);
+    new Activities("Swimming", TransportMode.SWIMMING, 800, 1);
+    new Activities("Skating", TransportMode.SKATING, 300, 5);
  
     Scanner mainFeed = new Scanner(System.in);
     System.out.println("Welcome to your new favorite sports app! (๑>؂•̀๑)ᕗ");
@@ -106,9 +106,23 @@ public class Feed
             case 6:    
                 
             case 7:
-                System.out.println("Input the activity you've done:");
-              //  Athletes.calculateBurnedCalories();
-              
+    mainFeed.nextLine(); // Clear the newline buffer
+    System.out.println("Input the activity you've done (Walking, Running, Biking, Swimming, Skating):");
+    String activityName = mainFeed.nextLine().trim();
+
+    System.out.println("How many kilometers did you do?");
+    double distanceKm = mainFeed.nextDouble();
+
+    Activities activity = Activities.findActivityByName(activityName);
+
+    if (activity != null) {
+        double burnedCalories = activity.calculateBurnedCalories(distanceKm);
+        System.out.println("You burned approximately " + burnedCalories + " calories doing " + activityName + ".");
+    } else {
+        System.out.println("Activity not found.");
+    }
+    break;
+
               default: 
                   System.out.println("Not a good choice!");
                   break;

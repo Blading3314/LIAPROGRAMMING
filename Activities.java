@@ -76,4 +76,18 @@ public class Activities
         }
     }
 }
+
+public static Activities findActivityByName(String name) {
+    for (Activities activity : allActivities) { // assuming allActivities is a static list
+        if (activity.activityName.equalsIgnoreCase(name)) {
+            return activity;
+        }
+    }
+    return null;
+}
+
+public double calculateBurnedCalories(double distanceKm) {
+    return this.caloriesPerDistance * distanceKm;
+}
+
 }
