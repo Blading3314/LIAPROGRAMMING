@@ -56,4 +56,24 @@ public class Activities
             }
         }
     }
+    
+    public static void listActivitiesDetails() {
+    for (TransportMode mode : TransportMode.values()) {
+        System.out.println("Transport Mode: " + mode);
+        boolean found = false;
+        for (Activities activity : allActivities) {
+            if (activity.mode == mode) {
+                System.out.println("  - Activity: " + activity.activityName);
+                System.out.println("    Distance: " + activity.distance + " units");
+                System.out.println("    Calories per Unit: " + activity.caloriesPerDistance);
+                System.out.println("    Total Calories Lost: " + activity.getCaloriesPerDistance());
+                System.out.println("    Athletes: " + activity.athletes.size());
+                found = true;
+            }
+        }
+        if (!found) {
+            System.out.println("  No activities.");
+        }
+    }
+}
 }

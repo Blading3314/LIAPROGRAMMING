@@ -77,6 +77,9 @@ public class Feed
             break;
             
         case 5:
+            System.out.println("Here is a list of activities and their details: ");
+            Activities.listActivitiesDetails();
+            break;
             
         case 6:    
             
