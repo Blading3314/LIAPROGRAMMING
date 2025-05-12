@@ -1,10 +1,10 @@
 #BlueJ class context
 comment0.target=Activities
-comment1.params=activityName\ mode\ caloriesPerDistance\ distance
-comment1.target=Activities(java.lang.String,\ TransportMode,\ int,\ int)
+comment1.params=activityName\ mode\ caloriesPerM\ distance
+comment1.target=Activities(java.lang.String,\ TransportMode,\ double,\ int)
 comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Activities\r\n
 comment2.params=
-comment2.target=int\ getCaloriesPerDistance()
+comment2.target=double\ getCaloriesPerM()
 comment3.params=athlete
 comment3.target=void\ setAthlete(Athletes)
 comment4.params=
@@ -15,6 +15,4 @@ comment6.params=
 comment6.target=void\ listActivitiesDetails()
 comment7.params=name
 comment7.target=Activities\ findActivityByName(java.lang.String)
-comment8.params=distanceKm
-comment8.target=double\ calculateBurnedCalories(double)
-numComments=9
+numComments=8

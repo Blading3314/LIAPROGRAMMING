@@ -5,27 +5,25 @@ public class Activities
     protected TransportMode mode;
     protected String activityName;
     protected int caloriesLost;
-    protected int caloriesPerDistance;
+    protected double caloriesPerM;
     protected int distance;
     protected ArrayList<Athletes> athletes;
     protected static ArrayList<Activities> allActivities = new ArrayList<Activities>();;
     /**
      * Constructor for objects of class Activities
      */
-    public Activities(String activityName, TransportMode mode, int caloriesPerDistance, int distance)
+    public Activities(String activityName, TransportMode mode, double caloriesPerM, int distance)
     {
         this.activityName = activityName;
         this.mode = mode;
-        this.caloriesPerDistance = caloriesPerDistance;
+        this.caloriesPerM = caloriesPerM;
         this.distance = distance;
         athletes = new ArrayList<>();
         allActivities.add(this);
         }
     
-    public int getCaloriesPerDistance()
-    {
-        caloriesLost = caloriesPerDistance * distance;
-        return caloriesLost;
+        public double getCaloriesPerM() {
+        return caloriesPerM;
     }
     
     public void setAthlete(Athletes athlete)
@@ -57,16 +55,15 @@ public class Activities
         }
     }
     
-    public static void listActivitiesDetails() {
+public static void listActivitiesDetails() {
     for (TransportMode mode : TransportMode.values()) {
         System.out.println("Transport Mode: " + mode);
         boolean found = false;
         for (Activities activity : allActivities) {
             if (activity.mode == mode) {
                 System.out.println("  - Activity: " + activity.activityName);
-                System.out.println("    Distance: " + activity.distance + " units");
-                System.out.println("    Calories per Unit: " + activity.caloriesPerDistance);
-                System.out.println("    Total Calories Lost: " + activity.getCaloriesPerDistance());
+                System.out.println("    Distance: " + activity.distance + "M");
+                System.out.println("    Calories per Kg per M: " + String.format("%.4f", activity.getCaloriesPerM()));
                 System.out.println("    Athletes: " + activity.athletes.size());
                 found = true;
             }
@@ -77,6 +74,7 @@ public class Activities
     }
 }
 
+
 public static Activities findActivityByName(String name) {
     for (Activities activity : allActivities) { // assuming allActivities is a static list
         if (activity.activityName.equalsIgnoreCase(name)) {
@@ -85,9 +83,4 @@ public static Activities findActivityByName(String name) {
     }
     return null;
 }
-
-public double calculateBurnedCalories(double distanceKm) {
-    return this.caloriesPerDistance * distanceKm;
-}
-
 }
