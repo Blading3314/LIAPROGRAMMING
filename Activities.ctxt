@@ -9,6 +9,5 @@ comment2.target=int\ getCaloriesPerDistance()
 comment3.params=athlete
 comment3.target=void\ setAthlete(Athletes)
 comment4.params=
-comment4.target=void\ getDetails()
-comment4.text=\ \r\n\ Displays\ all\ items\ in\ the\ given\ list.\r\n\ If\ the\ list\ is\ empty,\ a\ message\ indicating\ that\ there\ are\ no\ items\r\n\ is\ shown.\ Otherwise,\ it\ goes\ through\ each\ item\ in\ the\ list\ and\ prints\r\n\ its\ details\ to\ the\ user.\ This\ method\ can\ be\ used\ for\ displaying\ all\r\n\ athletes,\ activities,\ or\ equipment\ depending\ on\ the\ list\ passed\ in.\r\n\ \r\n
+comment4.target=void\ listActivities()
 numComments=5

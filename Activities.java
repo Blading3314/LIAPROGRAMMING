@@ -1,5 +1,4 @@
-
-import java.util.ArrayList;
+import java.util.*;
 /**
  * Write a description of class Activities here.
  *
@@ -10,21 +9,23 @@ public class Activities
 {
     // instance variables - replace the example below with your own
     protected TransportMode mode;
-    protected String activity;
+    protected String activityName;
     protected int caloriesLost;
     protected int caloriesPerDistance;
     protected int distance;
     protected ArrayList<Athletes> athletes;
+    protected static ArrayList<Activities> allActivities = new ArrayList<Activities>();;
     /**
      * Constructor for objects of class Activities
      */
     public Activities(String activityName, TransportMode mode, int caloriesPerDistance, int distance)
     {
-        activity = activityName;
+        this.activityName = activityName;
         this.mode = mode;
         this.caloriesPerDistance = caloriesPerDistance;
         this.distance = distance;
         athletes = new ArrayList<>();
+        allActivities.add(this);
         }
     
     public int getCaloriesPerDistance()
@@ -38,16 +39,11 @@ public class Activities
         athletes.add(athlete);
     }
     
-    /** 
-     * Displays all items in the given list.
-     * If the list is empty, a message indicating that there are no items
-     * is shown. Otherwise, it goes through each item in the list and prints
-     * its details to the user. This method can be used for displaying all
-     * athletes, activities, or equipment depending on the list passed in.
-     * 
-     */
-    public void getDetails()
+    public static void listActivities()
     {
-        System.out.println(activity);
+        for(Activities activity : allActivities)
+        {
+            System.out.println(activity.activityName);
+        }
     }
 }

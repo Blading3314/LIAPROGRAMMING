@@ -8,8 +8,7 @@ import java.util.List;
  * @version (a version number or a date)
  */
 public class Feed
-{
- private ArrayList<Activities> activities;
+{ 
  private List<Athletes> allAthletes = new ArrayList<>();  
  //private static final List<Athletes> allAthletes = new ArrayList<>();
  public static void main(String[] args) {
@@ -17,7 +16,10 @@ public class Feed
     
     new Athletes("John", "Doe", Gender.MALE, 1995);
     new Athletes("Jane", "Doe", Gender.FEMALE, 1998);
-
+    
+    new Activities("Walking", TransportMode.WALKING, 5, 20);
+    new Activities("Biking", TransportMode.BIKING, 10, 20);
+    new Activities("Swimming", TransportMode.BIKING, 10, 20);
  
     Scanner mainFeed = new Scanner(System.in);
     System.out.println("Welcome to your new favorite sports app! (๑>؂•̀๑)ᕗ");
@@ -58,6 +60,9 @@ public class Feed
             break;
             
         case 2:
+            System.out.println("List of Activities: ");
+            Activities.listActivities();
+            break;
             
         case 3:
           System.out.println("Here is a list of all athletes: ");
@@ -76,36 +81,4 @@ public class Feed
     }
     
     } 
-    
- /**
-     * Constructor for objects of class Feed
-     */
-    public Feed()
-    {
-        activities = new ArrayList<>();
-    }
-
-
-    
- public void addActivity(Activities activity)
-    {
-        activities.add(activity);
-    }
-
- /**
-     * Prints all activities in a list
-     */
-   public void listActivities()
-    {
-        for(Activities activity : activities) {
-            activity.getDetails();
-            System.out.println();   // empty line between posts
-        }
-        /*
-            get ArrayList<Activities> activityName 
-            for every string activity in activityName
-            print activity
-        */
-        
-    }
 }
