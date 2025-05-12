@@ -12,49 +12,44 @@ public class Athletes
    private Gender gender;
    private int yearOfBirth;
    private int caloriesBurned;
-   private double weight;
    private static List<Athletes> allAthletes = new ArrayList<>(); 
    /**
      * Constructor for objects of class Athletes
      */
-    public Athletes(String name,String lastName, Gender gender,int yearOfBirth, double weight)
+    public Athletes(String name,String lastName, Gender gender,int yearOfBirth)
     {
        this.name = name;
        this.lastName = lastName;
        this.yearOfBirth = yearOfBirth;
        this.gender = gender;
-       this.weight = weight;
        allAthletes.add(this);
     }
    
    public static void listAllAthletes(){
-        for(Athletes athletes : allAthletes){
-            System.out.println(athletes.name + " " + athletes.lastName);
-        }
-    } 
+    for(Athletes athlete : allAthletes){
+        System.out.println( athlete );
+    }
+}
     
    @Override
    public String toString(){
         return "Name: " + name + " " + lastName + "\n" + 
         "Gender: " + gender + "\n" +
-        "Year of birth: " + yearOfBirth + "\n" + "Weight: " + weight + "kg";
+        "Year of birth: " + yearOfBirth + "\n";
     }
    
    public Gender getGender()
     {
        return gender;
     }
-  
+   
+    
    public void setGender(Gender gender){
         this.gender = gender;
     } 
     
-   public int calculateBurnedCalories(Activities activity, double distanceM) {
-        // Calculate total calories burned: weight * distance (in meters) * calories per meter
-        double totalCalories = weight * distanceM * activity.getCaloriesPerM();
-        caloriesBurned = (int) totalCalories;  // Cast to int to get the calories as a whole number
+   public int calculateBurnedCalories(Activities activity){
+        caloriesBurned = activity.getCaloriesPerDistance();
         return caloriesBurned;
-    }
-
+    }  
 }
-
