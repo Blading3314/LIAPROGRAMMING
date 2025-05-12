@@ -1,10 +1,4 @@
 import java.util.*;
-/**
- * Write a description of class Activities here.
- *
- * @author (your name)
- * @version (a version number or a date)
- */
 public class Activities
 {
     // instance variables - replace the example below with your own
@@ -44,6 +38,22 @@ public class Activities
         for(Activities activity : allActivities)
         {
             System.out.println(activity.activityName);
+        }
+    }
+    
+    public static void listActivitiesByTransportMode() {
+        for (TransportMode mode : TransportMode.values()) {
+            System.out.println("Transport Mode: " + mode);
+            boolean found = false;
+            for (Activities activity : allActivities) {
+                if (activity.mode == mode) {
+                    System.out.println("  - " + activity.activityName);
+                    found = true;
+                }
+            }
+            if (!found) {
+                System.out.println("  No activities.");
+            }
         }
     }
 }

@@ -18,8 +18,10 @@ public class Feed
     new Athletes("Jane", "Doe", Gender.FEMALE, 1998);
     
     new Activities("Walking", TransportMode.WALKING, 5, 20);
-    new Activities("Biking", TransportMode.BIKING, 10, 20);
-    new Activities("Swimming", TransportMode.BIKING, 10, 20);
+    new Activities("Running", TransportMode.RUNNING, 12, 20);
+    new Activities("Biking", TransportMode.BIKING, 15, 20);
+    new Activities("Swimming", TransportMode.SWIMMING, 18, 20);
+    new Activities("Skating", TransportMode.SKATING, 10, 20);
  
     Scanner mainFeed = new Scanner(System.in);
     System.out.println("Welcome to your new favorite sports app! (๑>؂•̀๑)ᕗ");
@@ -69,7 +71,10 @@ public class Feed
           Athletes.listAllAthletes();
           break;
         
-        case 4:  
+        case 4:
+            System.out.println("Here is a list of activities sorted by mode: ");
+            Activities.listActivitiesByTransportMode();
+            break;
             
         case 5:
             
