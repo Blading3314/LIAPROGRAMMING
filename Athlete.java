@@ -2,7 +2,7 @@ import java.util.*;
 /**
  * Class that creates and holds the athletes's informations
  */
-public class Athletes
+public class Athlete
 {
     // 1) Fields
     private String name;
@@ -10,10 +10,10 @@ public class Athletes
     private Gender gender;
     private int yearOfBirth;
     private int caloriesBurned;
-    private static List<Athletes> allAthletes = new ArrayList<>();
+    private static List <Athlete> allAthletes = new ArrayList<>();
 
     // 2) Constructor
-    public Athletes(String name, String lastName, Gender gender, int yearOfBirth)
+    public Athlete(String name, String lastName, Gender gender, int yearOfBirth)
     {
         this.name = name;
         this.lastName = lastName;
@@ -52,14 +52,14 @@ public class Athletes
     // 5) Static helpers
     /** Print all profiles */
     public static void listAllAthletes(){
-        for (Athletes athlete : allAthletes) {
+        for (Athlete athlete : allAthletes) {
             System.out.println(athlete);
             System.out.println();
         }
     }
 
     /** Return the master list for other classes to use */
-    public static List<Athletes> getAllAthletes() {
+    public static List<Athlete> getAllAthletes() {
         return allAthletes;
     }
 
@@ -68,7 +68,7 @@ public class Athletes
      * Calculate this athlete’s calories for one activity.
      * 
      */
-    public int calculateBurnedCalories(Activities activity){
+    public int calculateBurnedCalories(Activity activity){
         int cals = activity.getCaloriesPerDistance();
         this.caloriesBurned += cals;
         return cals;

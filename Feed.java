@@ -23,18 +23,18 @@ public class Feed
         int choice; // This variable stores the user's menu selection
         
         // Preload some example athletes and activities for demonstration
-        new Athletes("John", "Doe", Gender.MALE, 1995);
-        new Athletes("Jane", "Doe", Gender.FEMALE, 1998);
-        new Athletes ("Zayn","Dickerson", Gender.MALE, 1990);
-        new Athletes("Opal","Owens",Gender.OTHER, 2001);
-        new Athletes("Adrien","Agreste",Gender.MALE, 2006);
-        new Athletes("Marinette","Dupain-cheng",Gender.FEMALE,2006);
+        new Athlete("John", "Doe", Gender.MALE, 1995);
+        new Athlete("Jane", "Doe", Gender.FEMALE, 1998);
+        new Athlete("Zayn","Dickerson", Gender.MALE, 1990);
+        new Athlete("Opal","Owens",Gender.OTHER, 2001);
+        new Athlete("Adrien","Agreste",Gender.MALE, 2006);
+        new Athlete("Marinette","Dupain-cheng",Gender.FEMALE,2006);
         
-        new Activities("Walking", TransportMode.WALKING, 70, 5 );
-        new Activities("Running", TransportMode.RUNNING, 100, 5 );
-        new Activities("Biking", TransportMode.BIKING, 15, 5);
-        new Activities("Swimming", TransportMode.SWIMMING, 18, 1);
-        new Activities("Skating", TransportMode.SKATING, 10, 5);
+        new Activity("Walking", TransportMode.WALKING, 70, 5 );
+        new Activity("Running", TransportMode.RUNNING, 100, 5 );
+        new Activity("Biking", TransportMode.BIKING, 15, 5);
+        new Activity("Swimming", TransportMode.SWIMMING, 18, 1);
+        new Activity("Skating", TransportMode.SKATING, 10, 5);
     
         Scanner mainFeed = new Scanner(System.in);
         System.out.println("Welcome to your new favorite sports app! (๑>؂•̀๑)ᕗ");
@@ -96,7 +96,7 @@ public class Feed
                     int yearOfBirth = mainFeed.nextInt();
                     mainFeed.nextLine();
 
-                    Athletes athlete = new Athletes(name, lastName, gender, yearOfBirth);
+                    Athlete athlete = new Athlete(name, lastName, gender, yearOfBirth);
                     System.out.println();
                     System.out.print("Enter your current calories burned: ");
                     int initialCalories = mainFeed.nextInt();
@@ -109,7 +109,7 @@ public class Feed
                 case 2:
                     // List all athletes in the system
                     System.out.println("\n--- All Athletes ---");
-                    Athletes.listAllAthletes();
+                    Athlete.listAllAthletes();
                     break;
                 case 3:
                     // Create a new piece of equipment
@@ -137,9 +137,9 @@ public class Feed
                     }
                     // If not found, register as a custom mode
                     if (!found) {
-                        if (!Activities.isCustomMode(modeInput)) {
+                        if (!Activity.isCustomMode(modeInput)) {
                             System.out.println("New transport mode. Registering it now");
-                            Activities.registerCustomMode(modeInput);
+                            Activity.registerCustomMode(modeInput);
                         }
                     }
                     System.out.print("Calories per km: ");
@@ -151,7 +151,7 @@ public class Feed
                     System.out.print("Is this a powered activity (uses equipment)? (yes/no): ");
                     String powered = mainFeed.nextLine().trim().toLowerCase();
 
-                    Activities newAct;
+                    Activity newAct;
                     if (powered.equals("yes")) {
                         // Show all registered equipment
                         System.out.println("Available equipment:");
@@ -169,21 +169,21 @@ public class Feed
 
                         // Create powered activity with correct mode type
                         if (found) {
-                            newAct = new PoweredActivities(actName, m, cals, dist, equipmentName);
+                            newAct = new PoweredActivity(actName, m, cals, dist, equipmentName);
                         } else {
-                            newAct = new PoweredActivities(actName, modeInput, cals, dist, equipmentName);
+                            newAct = new PoweredActivity(actName, modeInput, cals, dist, equipmentName);
                         }
                     } else {
                         // Create regular activity with correct mode type
                         if (found) {
-                            newAct = new Activities(actName, m, cals, dist);
+                            newAct = new Activity(actName, m, cals, dist);
                         } else {
-                            newAct = new Activities(actName, modeInput, cals, dist);
+                            newAct = new Activity(actName, modeInput, cals, dist);
                         }
                     }
 
                     // Assign the activity to an athlete
-                    List<Athletes> athList = Athletes.getAllAthletes();
+                    List<Athlete> athList = Athlete.getAllAthletes();
                     System.out.println("Assign which athlete did this?");
                     for (int i = 0; i < athList.size(); i++) {
                         System.out.printf("  %d) %s%n", i+1, athList.get(i).getName());
@@ -197,45 +197,45 @@ public class Feed
                 case 6:
                     // List all activity names
                     System.out.println("\n--- All Activities (Names Only) ---");
-                    Activities.listActivities();
+                    Activity.listActivities();
                     break;
                 case 7:
                     // List activities grouped by mode (shows powered in parentheses)
                     System.out.println("\n--- Activities by Transport Mode ---");
-                    Activities.listActivitiesByTransportMode();
+                    Activity.listActivitiesByTransportMode();
                     break;
                 case 8:
                     // Show detailed info for all activities
                     System.out.println("\n--- Detailed Activity Information ---");
-                    Activities.listActivitiesDetails();
+                    Activity.listActivitiesDetails();
                     break;
                 case 9:
                     // List activities for a specific athlete
-                    List<Athletes> athletes = Athletes.getAllAthletes();
+                    List<Athlete> athletes = Athlete.getAllAthletes();
                     System.out.println("Select an athlete to view their activities:");
                     for (int i = 0; i < athletes.size(); i++) {
                         System.out.printf("  %d) %s%n", i+1, athletes.get(i).getName());
                     }
                     System.out.print("Your choice: ");
                     int sel = mainFeed.nextInt(); mainFeed.nextLine();
-                    Athletes a = athletes.get(sel - 1);
+                    Athlete a = athletes.get(sel - 1);
                     System.out.println();
-                    Activities.listActivitiesByAthlete(a);
+                    Activity.listActivitiesByAthlete(a);
                     break;
                 case 10: {
                     // Assign an existing activity to an athlete
-                    List<Activities> acts = Activities.getAllActivities();
+                    List<Activity> acts = Activity.getAllActivities();
                     System.out.println("Select an activity to assign:");
                     for (int i = 0; i < acts.size(); i++) {
-                        Activities a1 = acts.get(i);
+                        Activity a1 = acts.get(i);
                         System.out.printf("  %d) %s (%d km)%n", i+1, a1.activityName, a1.distance);
                     }
                     System.out.print("Your choice: ");
                     int aSel = mainFeed.nextInt();
                     mainFeed.nextLine();
-                    Activities chosenAct = acts.get(aSel - 1);
+                    Activity chosenAct = acts.get(aSel - 1);
 
-                    List<Athletes> aths = Athletes.getAllAthletes();
+                    List<Athlete> aths = Athlete.getAllAthletes();
                     System.out.println("Select an athlete to assign it to:");
                     for (int i = 0; i < aths.size(); i++) {
                         System.out.printf("  %d) %s%n", i+1, aths.get(i).getName());
@@ -243,7 +243,7 @@ public class Feed
                     System.out.print("Your choice: ");
                     int uSel = mainFeed.nextInt();
                     mainFeed.nextLine();
-                    Athletes chosenAth = aths.get(uSel - 1);
+                    Athlete chosenAth = aths.get(uSel - 1);
 
                     chosenAct.setAthlete(chosenAth);
                     System.out.printf(
@@ -254,12 +254,12 @@ public class Feed
                 } break;
                 case 11:
                     // Show the total distance for all activities
-                    int totalDist = Activities.calculateTotalDistanceAll();
+                    int totalDist = Activity.calculateTotalDistanceAll();
                     System.out.println("Total distance across all activities: " + totalDist + " km");
                     break;
                 case 12:
                     // Show the total calories burned by a specific athlete
-                    List<Athletes> list = Athletes.getAllAthletes();
+                    List<Athlete> list = Athlete.getAllAthletes();
                     System.out.println("Choose an athlete to see total calories burned:");
                     for (int i = 0; i < list.size(); i++) {
                         System.out.printf("  %d) %s%n", i+1, list.get(i).getName());
@@ -268,8 +268,8 @@ public class Feed
                     int selection = mainFeed.nextInt();
                     mainFeed.nextLine();
 
-                    Athletes chosenForCalories = list.get(selection-1);
-                    int burned = Activities.calculateCaloriesByAthlete(chosenForCalories);
+                    Athlete chosenForCalories = list.get(selection-1);
+                    int burned = Activity.calculateCaloriesByAthlete(chosenForCalories);
                     System.out.printf("%s burned a total of %d calories across all activities.%n",
                               chosenForCalories.getName(), burned);
                     break;

@@ -8,7 +8,7 @@ import java.util.Objects;
  * If the equipment is not already registered, it will be registered automatically.
  * This class helps track which activities use which equipment.
  */
-public class PoweredActivities extends Activities {
+public class PoweredActivity extends Activity {
     /**
      * The equipment used for this powered activity (e.g., "Bike", "Treadmill").
      */
@@ -24,7 +24,7 @@ public class PoweredActivities extends Activities {
      * @param equipmentName The name of the equipment used (e.g., "Bike").
      *                      If not already registered, it will be registered now.
      */
-    public PoweredActivities(String name,
+    public PoweredActivity(String name,
                              TransportMode mode,
                              int caloriesPerDistance,
                              int distance,
@@ -51,7 +51,7 @@ public class PoweredActivities extends Activities {
      * @param equipmentName The name of the equipment used (e.g., "Scooter").
      *                      If not already registered, it will be registered now.
      */
-    public PoweredActivities(String name,
+    public PoweredActivity(String name,
                              String customMode,
                              int caloriesPerDistance,
                              int distance,
@@ -104,9 +104,9 @@ public class PoweredActivities extends Activities {
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
-        if (!(obj instanceof PoweredActivities)) return false;
+        if (!(obj instanceof PoweredActivity)) return false;
         if (!super.equals(obj)) return false;
-        PoweredActivities other = (PoweredActivities) obj;
+        PoweredActivity other = (PoweredActivity) obj;
         return Objects.equals(equipment, other.equipment);
     }
 }

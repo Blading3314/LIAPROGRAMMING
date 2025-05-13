@@ -8,7 +8,7 @@
  */
 import java.util.*;
 
-public class Activities {
+public class Activity {
     /**
      * The transport mode for this activity (enum, or null if custom).
      */
@@ -36,11 +36,11 @@ public class Activities {
     /**
      * List of athletes who performed this activity.
      */
-    protected List<Athletes> athletes;
+    protected List<Athlete> athletes;
     /**
      * Global list of all activities (for listing, stats, etc).
      */
-    protected static List<Activities> allActivities = new ArrayList<>();
+    protected static List<Activity> allActivities = new ArrayList<>();
     /**
      * Set of all custom (user-defined) transport modes.
      */
@@ -49,7 +49,7 @@ public class Activities {
     /**
      * Constructor for built-in (enum) transport mode.
      */
-    public Activities(String activityName, TransportMode mode, int caloriesPerDistance, int distance) {
+    public Activity(String activityName, TransportMode mode, int caloriesPerDistance, int distance) {
         this.activityName = activityName;
         this.mode = mode;
         this.customMode = null;
@@ -62,7 +62,7 @@ public class Activities {
     /**
      * Constructor for custom (user-defined) transport mode.
      */
-    public Activities(String activityName, String customMode, int caloriesPerDistance, int distance) {
+    public Activity(String activityName, String customMode, int caloriesPerDistance, int distance) {
         this.activityName = activityName;
         this.mode = null;
         this.customMode = customMode;
@@ -85,7 +85,7 @@ public class Activities {
      * Associates an athlete with this activity.
      * @param athlete the athlete to add
      */
-    public void setAthlete(Athletes athlete) {
+    public void setAthlete(Athlete athlete) {
         athletes.add(athlete);
     }
 
@@ -93,7 +93,7 @@ public class Activities {
      * Lists the names of all activities.
      */
     public static void listActivities() {
-        for (Activities activity : allActivities) {
+        for (Activity activity : allActivities) {
             System.out.println(activity.activityName);
         }
     }
@@ -105,7 +105,7 @@ public class Activities {
     public static void listActivitiesByTransportMode() {
         for (String modeName : getAllModes()) {
             boolean found = false;
-            for (Activities a : allActivities) {
+            for (Activity a : allActivities) {
                 String aMode = (a.mode != null) ? a.mode.name() : null;
                 String aCustom = a.customMode;
                 if ((aMode != null && aMode.equals(modeName)) || (aCustom != null && aCustom.equals(modeName))) {
@@ -113,7 +113,7 @@ public class Activities {
                         System.out.println("Transport Mode: " + modeName);
                         found = true;
                     }
-                    if (a instanceof PoweredActivities) {
+                    if (a instanceof PoweredActivity) {
                         System.out.println("  - " + a.activityName + " (Powered)");
                     } else {
                         System.out.println("  - " + a.activityName);
@@ -134,7 +134,7 @@ public class Activities {
     public static void listActivitiesDetails() {
         for (String modeName : getAllModes()) {
             boolean found = false;
-            for (Activities a : allActivities) {
+            for (Activity a : allActivities) {
                 String aMode = (a.mode != null) ? a.mode.name() : null;
                 String aCustom = a.customMode;
                 if ((aMode != null && aMode.equals(modeName)) || (aCustom != null && aCustom.equals(modeName))) {
@@ -147,8 +147,8 @@ public class Activities {
                     System.out.println("    Calories per km: " + a.caloriesPerDistance);
                     System.out.println("    Total Calories Lost: " + a.getCaloriesPerDistance());
                     System.out.println("    Athletes: " + a.athletes.size());
-                    if (a instanceof PoweredActivities) {
-                        PoweredActivities pa = (PoweredActivities) a;
+                    if (a instanceof PoweredActivity) {
+                        PoweredActivity pa = (PoweredActivity) a;
                         System.out.println("    Powered: Yes");
                         System.out.println("    Equipment: " + pa.getEquipment());
                     } else {
@@ -180,9 +180,9 @@ public class Activities {
      * @param athlete the athlete to check
      * @return total calories burned
      */
-    public static int calculateCaloriesByAthlete(Athletes athlete) {
+    public static int calculateCaloriesByAthlete(Athlete athlete) {
         int total = 0;
-        for (Activities a : allActivities) {
+        for (Activity a : allActivities) {
             if (a.athletes.contains(athlete)) {
                 total += a.getCaloriesPerDistance();
             }
@@ -196,7 +196,7 @@ public class Activities {
      */
     public static int calculateTotalCaloriesAll() {
         int total = 0;
-        for (Activities a : allActivities) {
+        for (Activity a : allActivities) {
             total += a.getCaloriesPerDistance();
         }
         return total;
@@ -207,13 +207,13 @@ public class Activities {
      * Indicates if an activity is powered and the equipment used.
      * @param athlete the athlete to check
      */
-    public static void listActivitiesByAthlete(Athletes athlete) {
+    public static void listActivitiesByAthlete(Athlete athlete) {
         System.out.println("Activities for " + athlete.getName() + ":");
         int totalDist = 0;
-        for (Activities a : allActivities) {
+        for (Activity a : allActivities) {
             if (a.athletes.contains(athlete)) {
-                if (a instanceof PoweredActivities) {
-                    PoweredActivities pa = (PoweredActivities) a;
+                if (a instanceof PoweredActivity) {
+                    PoweredActivity pa = (PoweredActivity) a;
                     System.out.printf(" - %s: %d km [Powered, Equipment: %s]%n", a.activityName, a.distance, pa.getEquipment());
                 } else {
                     System.out.printf(" - %s: %d km%n", a.activityName, a.distance);
@@ -233,9 +233,9 @@ public class Activities {
      * @param athlete the athlete to check
      * @return total distance
      */
-    public static int calculateDistanceByAthlete(Athletes athlete) {
+    public static int calculateDistanceByAthlete(Athlete athlete) {
         int total = 0;
-        for (Activities a : allActivities) {
+        for (Activity a : allActivities) {
             if (a.athletes.contains(athlete)) {
                 total += a.distance;
             }
@@ -249,7 +249,7 @@ public class Activities {
      */
     public static int calculateTotalDistanceAll() {
         int total = 0;
-        for (Activities a : allActivities) {
+        for (Activity a : allActivities) {
             total += a.distance;
         }
         return total;
@@ -259,7 +259,7 @@ public class Activities {
      * Returns the global list of all activities.
      * @return list of all activities
      */
-    public static List<Activities> getAllActivities() {
+    public static List<Activity> getAllActivities() {
         return allActivities;
     }
 
