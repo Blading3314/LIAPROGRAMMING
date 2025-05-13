@@ -150,7 +150,7 @@ public class Feed
 
                     Athletes chosenForCalories = list.get(selection-1);
                 int burned = Activities.calculateCaloriesByAthlete(chosenForCalories);
-            System.out.printf("%s burned a total of %d calories.%n",
+                System.out.printf("%s burned a total of %d calories.%n",
                       chosenForCalories.toString(), burned);
                     break;
                 default: 
@@ -186,37 +186,38 @@ public class Feed
                                + totalDist + " km");
             break;
             case 12: {
-        // 1) Let user pick activity
-    List<Activities> acts = Activities.getAllActivities();
-    System.out.println("Select an activity to assign:");
-    for (int i = 0; i < acts.size(); i++) {
-        Activities a1 = acts.get(i);
-        System.out.printf("  %d) %s (%d km)%n", i+1, a1.activityName, a1.distance);
-    }
-    System.out.print("Your choice: ");
-    int aSel = mainFeed.nextInt();
-    mainFeed.nextLine();
-    Activities chosenAct = acts.get(aSel - 1);
-
-        // 2) Let user pick an athlete
-        List<Athletes> aths = Athletes.getAllAthletes();
-        System.out.println("Select an athlete to assign it to:");
-        for (int i = 0; i < aths.size(); i++) {
-        System.out.printf("  %d) %s%n", i+1, aths.get(i).getName());
-        }
-        System.out.print("Your choice: ");
-        int uSel = mainFeed.nextInt();
-        mainFeed.nextLine();
-        Athletes chosenAth = aths.get(uSel - 1);
-
-        // 3) Perform the assignment
-        chosenAct.setAthlete(chosenAth);
-        System.out.printf(
-        "Assigned \"%s\" to %s.%n",
-        chosenAct.activityName,
-        chosenAth.getName()
-        );
-    } break;
+            // 1) Let user pick activity
+            List<Activities> acts = Activities.getAllActivities();
+            System.out.println("Select an activity to assign:");
+            for (int i = 0; i < acts.size(); i++) {
+                Activities a1 = acts.get(i);
+                System.out.printf("  %d) %s (%d km)%n", i+1, a1.activityName, a1.distance);
+            }
+            System.out.print("Your choice: ");
+            int aSel = mainFeed.nextInt();
+            mainFeed.nextLine();
+            Activities chosenAct = acts.get(aSel - 1);
+    
+            // 2) Let user pick an athlete
+            List<Athletes> aths = Athletes.getAllAthletes();
+            System.out.println("Select an athlete to assign it to:");
+            for (int i = 0; i < aths.size(); i++) {
+            System.out.printf("  %d) %s%n", i+1, aths.get(i).getName());
+            }
+            System.out.print("Your choice: ");
+            int uSel = mainFeed.nextInt();
+            mainFeed.nextLine();
+            Athletes chosenAth = aths.get(uSel - 1);
+    
+            // 3) Perform the assignment
+            chosenAct.setAthlete(chosenAth);
+            System.out.printf(
+            "Assigned \"%s\" to %s.%n",
+            chosenAct.activityName,
+            chosenAth.getName()
+            );
+        }    
+        break;
 
 
             }

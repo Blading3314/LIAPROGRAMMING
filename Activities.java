@@ -1,4 +1,11 @@
 import java.util.*;
+/**
+ * Represents a single activity.
+ * 
+ * Each activity has a name, a mode of transport, a distance covered,
+ * and a calorie burn rate per unit distance. Activities can be associated
+ * with multiple athletes.
+ */
 public class Activities {
     protected TransportMode mode;
     protected String activityName;
@@ -9,7 +16,12 @@ public class Activities {
     protected static List<Activities> allActivities = new ArrayList<>();
 
     /**
-     * Constructor for objects of class Activities
+     * Constructor for objects of class Activities.
+     * 
+     * @param activityName         the name of the activity ("Running")
+     * @param mode                 the mode of transport or activity (WALKING, RUNNING)
+     * @param caloriesPerDistance  the number of calories burned per unit distance
+     * @param distance             the total distance of the activity in kilometers
      */
     public Activities(String activityName, TransportMode mode, int caloriesPerDistance, int distance) {
         this.activityName = activityName;
@@ -85,7 +97,13 @@ public class Activities {
             }
         }
     }
-
+    
+    /**
+     * Returns a string representation of the activity, including its name,
+     * transport mode, distance, and calories burned per kilometer.
+     *
+     * @return a formatted string describing the activity
+     */
     @Override
     public String toString() {
         return String.format(
@@ -137,6 +155,12 @@ public class Activities {
         }
     }
     
+    /**
+     * Calculates the total distance covered by a specific athlete across all activities.
+     *
+     * @param athlete the athlete whose total distance is to be calculated
+     * @return the total distance (in kilometers) the athlete has participated in
+     */
         public static int calculateDistanceByAthlete(Athletes athlete) {
         int total = 0;
         for (Activities a : allActivities) {
@@ -146,6 +170,13 @@ public class Activities {
         }
         return total;
     }
+    
+    /**
+     * Calculates the total distance covered across all recorded activities,
+     * regardless of which athletes participated.
+     *
+     * @return the total distance (in kilometers) of all activities
+     */
             public static int calculateTotalDistanceAll() {
         int total = 0;
         for (Activities a : allActivities) {
@@ -153,6 +184,15 @@ public class Activities {
         }
             return total;
     }
+    
+    /**
+     * Returns the list of all recorded activity instances.
+     * 
+     * This list includes every Activities object created and added
+     * to the system via the constructor.
+     *
+     * @return a list containing all activity objects
+     */
         public static List<Activities> getAllActivities() {
         return allActivities;
     }

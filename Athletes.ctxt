@@ -1,6 +1,5 @@
 #BlueJ class context
 comment0.target=Athletes
-comment0.text=\r\n\ Class\ that\ creates\ and\ holds\ the\ athletes's\ informations\r\n
 comment1.params=name\ lastName\ gender\ yearOfBirth
 comment1.target=Athletes(java.lang.String,\ java.lang.String,\ Gender,\ int)
 comment2.params=
