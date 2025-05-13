@@ -1,5 +1,4 @@
 import java.util.*;
-
 public class Activities {
     protected TransportMode mode;
     protected String activityName;

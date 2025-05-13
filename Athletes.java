@@ -1,5 +1,7 @@
 import java.util.*;
-
+/**
+ * Class that creates and holds the athletes's informations
+ */
 public class Athletes
 {
     // 1) Fields

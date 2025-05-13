@@ -1,7 +1,17 @@
 #BlueJ class context
 comment0.target=ValidEquipment
-comment1.params=nameString
+comment0.text=\r\n\ Represents\ a\ piece\ of\ equipment.\ \ Clients\ can\ register\ new\ equipment\r\n\ names\ at\ runtime\ or\ look\ up\ existing\ ones.\r\n
+comment1.params=name
 comment1.target=ValidEquipment(java.lang.String)
-comment2.params=
-comment2.target=java.lang.String\ toString()
-numComments=3
+comment2.params=name
+comment2.target=ValidEquipment\ register(java.lang.String)
+comment2.text=\ \r\n\ Register\ a\ new\ equipment\ (if\ not\ already\ present),\ returning\ its\ instance.\r\n\ Name\ matching\ is\ case-insensitive.\r\n
+comment3.params=name
+comment3.target=ValidEquipment\ getByName(java.lang.String)
+comment3.text=\r\n\ Lookup\ an\ equipment\ by\ name;\ returns\ null\ if\ none\ registered.\r\n
+comment4.params=
+comment4.target=java.util.Set\ allNames()
+comment4.text=\r\n\ @return\ a\ read-only\ set\ of\ all\ registered\ equipment\ names.\r\n
+comment5.params=
+comment5.target=java.lang.String\ toString()
+numComments=6

@@ -24,6 +24,10 @@ public class Feed
         // Preload athletes and activities (need to add more!)
         new Athletes("John", "Doe", Gender.MALE, 1995);
         new Athletes("Jane", "Doe", Gender.FEMALE, 1998);
+        new Athletes ("Zayn","Dickerson", Gender.MALE, 1990);
+        new Athletes("Opal","Owens",Gender.OTHER, 2001);
+        new Athletes("Adrien","Agreste",Gender.MALE, 2006);
+        new Athletes("Marinette","Dupain-cheng",Gender.FEMALE,2006);
         
         
         new Activities("Walking", TransportMode.WALKING, 70, 5 );
