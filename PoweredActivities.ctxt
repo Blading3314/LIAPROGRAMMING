@@ -1,14 +1,9 @@
 #BlueJ class context
 comment0.target=PoweredActivities
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ PoweredActivities\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-comment1.params=activityName\ mode\ caloriesPerDistance\ distance
-comment1.target=PoweredActivities(java.lang.String,\ TransportMode,\ int,\ int)
-comment2.params=nameWord
-comment2.target=ValidEquipment\ getNameOfEquipment(java.lang.String)
-comment2.text=\ \r\n\ Find\ the\ ValidEquipment\ associated\ with\ its\ respective\ name/command\ typed\ \r\n\ as\ String.\ Returns\ UNKNOWN\ if\ the\ equipment\ name\ is\ not\ valid.\r\n
-comment3.params=aString
-comment3.target=boolean\ isCommand(java.lang.String)
-comment3.text=\r\n\ Check\ whether\ a\ given\ String\ is\ a\ valid\ name\ of\ equipment.\ \r\n\ @return\ true\ if\ it\ is,\ false\ if\ it\ isn't.\r\n
-comment4.params=
-comment4.target=void\ showALL()
-numComments=5
+comment1.params=name\ mode\ caloriesPerDistance\ distance\ equipmentName
+comment1.target=PoweredActivities(java.lang.String,\ TransportMode,\ int,\ int,\ java.lang.String)
+comment2.params=
+comment2.target=ValidEquipment\ getEquipment()
+comment3.params=
+comment3.target=java.lang.String\ toString()
+numComments=4

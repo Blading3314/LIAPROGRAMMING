@@ -1,9 +1,10 @@
 
 /**
- * Enumeration class TransportMode - write a description of the enum class here
- *
- * @author (your name here)
- * @version (version number or date here)
+ * Enumeration representing various modes of transport for an activity.
+ * 
+ * This enum is used to classify the type of movement associated with an
+ * activity, which can help in grouping and filtering.
+ * 
  */
 public enum TransportMode
 {
