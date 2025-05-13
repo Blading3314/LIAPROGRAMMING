@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.List;
+import java.util.Random;
 
 /**
  * The Feed class is the main entry point for the sports app.
@@ -121,35 +122,58 @@ public class Feed
                     break;
                 case 5: {
                     // Create a new activity (can be powered or not)
-                    System.out.print("Activity name: ");
+                    System.out.print("What would you like to call this activity? ");
                     String actName = mainFeed.nextLine();
-                    System.out.print("Transport mode (WALKING, RUNNING, etc.): ");
+                    System.out.print("How did you get moving? (e.g., WALKING, RUNNING): ");
                     String modeInput = mainFeed.nextLine().toUpperCase();
-                    TransportMode m = null;
+                    Object mode = null;
                     boolean found = false;
                     // Check if the mode is a built-in enum
                     for (TransportMode tm : TransportMode.values()) {
                         if (tm.name().equals(modeInput)) {
-                            m = tm;
+                            mode = tm;
                             found = true;
                             break;
                         }
                     }
-                    // If not found, register as a custom mode
+                    // If not found, use as custom mode
                     if (!found) {
                         if (!Activity.isCustomMode(modeInput)) {
                             System.out.println("New transport mode. Registering it now");
                             Activity.registerCustomMode(modeInput);
                         }
+                        mode = modeInput;
                     }
-                    System.out.print("Calories per km: ");
+                    System.out.print("How many calories do you burn per km? ");
                     int cals = mainFeed.nextInt(); mainFeed.nextLine();
-                    System.out.print("Distance (km): ");
+                    System.out.print("How far did you go (in km)? ");
                     int dist = mainFeed.nextInt(); mainFeed.nextLine();
 
                     // Ask if this is a powered activity (uses equipment)
-                    System.out.print("Is this a powered activity (uses equipment)? (yes/no): ");
-                    String powered = mainFeed.nextLine().trim().toLowerCase();
+                    String powered = "";
+                    boolean firstPrompt = true;
+                    String[] errorMessages = {
+                        "Whoops! Please answer with 'yes' or 'no'.",
+                        "Hmm, I was expecting 'yes' or 'no'. Try again!",
+                        "Let's try that again—just type 'yes' or 'no'.",
+                        "Oops! Just a simple 'yes' or 'no', please."
+                    };
+                    Random rand = new Random();
+                    while (true) {
+                        if (!firstPrompt) {
+                            System.out.println();
+                        }
+                        if (!powered.isEmpty()) {
+                            System.out.println(errorMessages[rand.nextInt(errorMessages.length)]);
+                        }
+                        System.out.print("Does this activity use any equipment? (yes/no): ");
+                        powered = mainFeed.nextLine().trim().toLowerCase();
+                        if (powered.equals("yes") || powered.equals("no")) {
+                            break;
+                        }
+                        firstPrompt = false;
+                    }
+                    System.out.println();
 
                     Activity newAct;
                     if (powered.equals("yes")) {
@@ -160,6 +184,7 @@ public class Feed
                         }
                         System.out.print("Enter equipment name: ");
                         String equipmentName = mainFeed.nextLine();
+                        System.out.println(); // Add blank line for clarity
 
                         // Register new equipment if needed
                         if (ValidEquipment.getByName(equipmentName) == null) {
@@ -167,29 +192,22 @@ public class Feed
                             ValidEquipment.register(equipmentName);
                         }
 
-                        // Create powered activity with correct mode type
-                        if (found) {
-                            newAct = new PoweredActivity(actName, m, cals, dist, equipmentName);
-                        } else {
-                            newAct = new PoweredActivity(actName, modeInput, cals, dist, equipmentName);
-                        }
+                        // Create powered activity with combined constructor
+                        newAct = new PoweredActivity(actName, mode, cals, dist, equipmentName);
                     } else {
-                        // Create regular activity with correct mode type
-                        if (found) {
-                            newAct = new Activity(actName, m, cals, dist);
-                        } else {
-                            newAct = new Activity(actName, modeInput, cals, dist);
-                        }
+                        // Create regular activity with combined constructor
+                        newAct = new Activity(actName, mode, cals, dist);
                     }
 
                     // Assign the activity to an athlete
                     List<Athlete> athList = Athlete.getAllAthletes();
-                    System.out.println("Assign which athlete did this?");
+                    System.out.println("Who did this activity? Pick from the list below:");
                     for (int i = 0; i < athList.size(); i++) {
                         System.out.printf("  %d) %s%n", i+1, athList.get(i).getName());
                     }
-                    System.out.print("Your choice: ");
+                    System.out.print("Enter the number of the athlete: ");
                     int ai = mainFeed.nextInt(); mainFeed.nextLine();
+                    System.out.println(); // Add blank line for clarity
                     newAct.setAthlete(athList.get(ai - 1));
 
                     System.out.println("Created activity: " + newAct);
