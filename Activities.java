@@ -1,31 +1,58 @@
-import java.util.*;
 /**
- * Represents a single activity.
- * 
- * Each activity has a name, a mode of transport, a distance covered,
- * and a calorie burn rate per unit distance. Activities can be associated
- * with multiple athletes.
+ * The Activities class represents a physical activity performed by athletes.
+ * It supports both built-in (enum) and user-defined (custom) transport modes,
+ * and can be extended for powered activities (with equipment).
+ *
+ * Activities are tracked globally in a static list, and can be queried,
+ * listed, and analyzed by various criteria (mode, athlete, calories, etc).
  */
+import java.util.*;
+
 public class Activities {
+    /**
+     * The transport mode for this activity (enum, or null if custom).
+     */
     protected TransportMode mode;
+    /**
+     * The custom transport mode for this activity (null if using enum).
+     */
+    protected String customMode = null;
+    /**
+     * The name of the activity (e.g., "Running").
+     */
     protected String activityName;
+    /**
+     * The total calories lost for this activity (calculated).
+     */
     protected int caloriesLost;
+    /**
+     * Calories burned per unit distance (e.g., per km).
+     */
     protected int caloriesPerDistance;
+    /**
+     * The distance of the activity (e.g., in km).
+     */
     protected int distance;
+    /**
+     * List of athletes who performed this activity.
+     */
     protected List<Athletes> athletes;
+    /**
+     * Global list of all activities (for listing, stats, etc).
+     */
     protected static List<Activities> allActivities = new ArrayList<>();
+    /**
+     * Set of all custom (user-defined) transport modes.
+     */
+    protected static Set<String> customModes = new HashSet<>();
 
     /**
-     * Constructor for objects of class Activities.
-     * 
-     * @param activityName         the name of the activity ("Running")
-     * @param mode                 the mode of transport or activity (WALKING, RUNNING)
-     * @param caloriesPerDistance  the number of calories burned per unit distance
-     * @param distance             the total distance of the activity in kilometers
+     * Constructor for built-in (enum) transport mode.
      */
     public Activities(String activityName, TransportMode mode, int caloriesPerDistance, int distance) {
         this.activityName = activityName;
         this.mode = mode;
+        this.customMode = null;
         this.caloriesPerDistance = caloriesPerDistance;
         this.distance = distance;
         this.athletes = new ArrayList<>();
@@ -33,7 +60,21 @@ public class Activities {
     }
 
     /**
-     * Calculates total calories for this activity (calories per unit * distance)
+     * Constructor for custom (user-defined) transport mode.
+     */
+    public Activities(String activityName, String customMode, int caloriesPerDistance, int distance) {
+        this.activityName = activityName;
+        this.mode = null;
+        this.customMode = customMode;
+        this.caloriesPerDistance = caloriesPerDistance;
+        this.distance = distance;
+        this.athletes = new ArrayList<>();
+        allActivities.add(this);
+    }
+
+    /**
+     * Calculates and returns the total calories lost for this activity.
+     * @return total calories lost (caloriesPerDistance * distance)
      */
     public int getCaloriesPerDistance() {
         caloriesLost = caloriesPerDistance * distance;
@@ -41,14 +82,15 @@ public class Activities {
     }
 
     /**
-     * Associates an athlete with this activity
+     * Associates an athlete with this activity.
+     * @param athlete the athlete to add
      */
     public void setAthlete(Athletes athlete) {
         athletes.add(athlete);
     }
 
     /**
-     * List all activity names
+     * Lists the names of all activities.
      */
     public static void listActivities() {
         for (Activities activity : allActivities) {
@@ -57,63 +99,86 @@ public class Activities {
     }
 
     /**
-     * List activities grouped by transport mode
+     * Lists all activities grouped by transport mode (enum and custom).
+     * Shows if an activity is powered in parentheses.
      */
     public static void listActivitiesByTransportMode() {
-        for (TransportMode m : TransportMode.values()) {
-            System.out.println("Transport Mode: " + m);
+        for (String modeName : getAllModes()) {
             boolean found = false;
             for (Activities a : allActivities) {
-                if (a.mode == m) {
-                    System.out.println("  - " + a.activityName);
-                    found = true;
+                String aMode = (a.mode != null) ? a.mode.name() : null;
+                String aCustom = a.customMode;
+                if ((aMode != null && aMode.equals(modeName)) || (aCustom != null && aCustom.equals(modeName))) {
+                    if (!found) {
+                        System.out.println("Transport Mode: " + modeName);
+                        found = true;
+                    }
+                    if (a instanceof PoweredActivities) {
+                        System.out.println("  - " + a.activityName + " (Powered)");
+                    } else {
+                        System.out.println("  - " + a.activityName);
+                    }
                 }
             }
             if (!found) {
+                System.out.println("Transport Mode: " + modeName);
                 System.out.println("  No activities.");
             }
         }
     }
 
     /**
-     * Detailed listing of each activity by mode, including calories and athlete count
+     * Shows detailed information for all activities, grouped by mode.
+     * Includes distance, calories, athlete count, and powered/equipment info.
      */
     public static void listActivitiesDetails() {
-        for (TransportMode m : TransportMode.values()) {
-            System.out.println("Transport Mode: " + m);
+        for (String modeName : getAllModes()) {
             boolean found = false;
             for (Activities a : allActivities) {
-                if (a.mode == m) {
+                String aMode = (a.mode != null) ? a.mode.name() : null;
+                String aCustom = a.customMode;
+                if ((aMode != null && aMode.equals(modeName)) || (aCustom != null && aCustom.equals(modeName))) {
+                    if (!found) {
+                        System.out.println("Transport Mode: " + modeName);
+                        found = true;
+                    }
                     System.out.println("  - Activity: " + a.activityName);
                     System.out.println("    Distance: " + a.distance + " km");
                     System.out.println("    Calories per km: " + a.caloriesPerDistance);
                     System.out.println("    Total Calories Lost: " + a.getCaloriesPerDistance());
                     System.out.println("    Athletes: " + a.athletes.size());
-                    found = true;
+                    if (a instanceof PoweredActivities) {
+                        PoweredActivities pa = (PoweredActivities) a;
+                        System.out.println("    Powered: Yes");
+                        System.out.println("    Equipment: " + pa.getEquipment());
+                    } else {
+                        System.out.println("    Powered: No");
+                    }
                 }
             }
             if (!found) {
+                System.out.println("Transport Mode: " + modeName);
                 System.out.println("  No activities.");
             }
         }
     }
-    
+
     /**
-     * Returns a string representation of the activity, including its name,
-     * transport mode, distance, and calories burned per kilometer.
-     *
-     * @return a formatted string describing the activity
+     * Returns a string representation of this activity, including mode, distance, and calories.
      */
     @Override
     public String toString() {
+        String modeStr = (mode != null) ? mode.toString() : (customMode != null ? customMode : "");
         return String.format(
             "Activity: %s%nMode: %s%nDistance: %d%nCalories/km: %d",
-            activityName, mode, distance, caloriesPerDistance
+            activityName, modeStr, distance, caloriesPerDistance
         );
     }
 
     /**
-     * Sum of the calories for a specific athlete over all their activities
+     * Calculates the total calories burned by a specific athlete across all their activities.
+     * @param athlete the athlete to check
+     * @return total calories burned
      */
     public static int calculateCaloriesByAthlete(Athletes athlete) {
         int total = 0;
@@ -126,7 +191,8 @@ public class Activities {
     }
 
     /**
-     * Sum calories for all activities regardless of athlete
+     * Calculates the total calories burned across all activities.
+     * @return total calories burned
      */
     public static int calculateTotalCaloriesAll() {
         int total = 0;
@@ -137,63 +203,94 @@ public class Activities {
     }
 
     /**
-     * List activities performed by a given athlete, showing units, total calories and their distance
+     * Lists all activities performed by a given athlete, showing units, total calories, and distance.
+     * Indicates if an activity is powered and the equipment used.
+     * @param athlete the athlete to check
      */
-        public static void listActivitiesByAthlete(Athletes athlete) {
+    public static void listActivitiesByAthlete(Athletes athlete) {
         System.out.println("Activities for " + athlete.getName() + ":");
         int totalDist = 0;
         for (Activities a : allActivities) {
-        if (a.athletes.contains(athlete)) {
-            System.out.printf(" - %s: %d km%n", a.activityName, a.distance);
-            totalDist += a.distance;
-        }
+            if (a.athletes.contains(athlete)) {
+                if (a instanceof PoweredActivities) {
+                    PoweredActivities pa = (PoweredActivities) a;
+                    System.out.printf(" - %s: %d km [Powered, Equipment: %s]%n", a.activityName, a.distance, pa.getEquipment());
+                } else {
+                    System.out.printf(" - %s: %d km%n", a.activityName, a.distance);
+                }
+                totalDist += a.distance;
+            }
         }
         if (totalDist == 0) {
-        System.out.println("   (none)");
+            System.out.println("   (none)");
         } else {
-        System.out.println("Total distance: " + totalDist + " km");
+            System.out.println("Total distance: " + totalDist + " km");
         }
     }
     
     /**
-     * Calculates the total distance covered by a specific athlete across all activities.
-     *
-     * @param athlete the athlete whose total distance is to be calculated
-     * @return the total distance (in kilometers) the athlete has participated in
+     * Calculates the total distance for a given athlete across all their activities.
+     * @param athlete the athlete to check
+     * @return total distance
      */
-        public static int calculateDistanceByAthlete(Athletes athlete) {
+    public static int calculateDistanceByAthlete(Athletes athlete) {
         int total = 0;
         for (Activities a : allActivities) {
-        if (a.athletes.contains(athlete)) {
-            total += a.distance;
-        }
+            if (a.athletes.contains(athlete)) {
+                total += a.distance;
+            }
         }
         return total;
     }
     
     /**
-     * Calculates the total distance covered across all recorded activities,
-     * regardless of which athletes participated.
-     *
-     * @return the total distance (in kilometers) of all activities
+     * Calculates the total distance across all activities.
+     * @return total distance
      */
-            public static int calculateTotalDistanceAll() {
+    public static int calculateTotalDistanceAll() {
         int total = 0;
         for (Activities a : allActivities) {
-        total += a.distance;
+            total += a.distance;
         }
-            return total;
+        return total;
     }
     
     /**
-     * Returns the list of all recorded activity instances.
-     * 
-     * This list includes every Activities object created and added
-     * to the system via the constructor.
-     *
-     * @return a list containing all activity objects
+     * Returns the global list of all activities.
+     * @return list of all activities
      */
-        public static List<Activities> getAllActivities() {
+    public static List<Activities> getAllActivities() {
         return allActivities;
     }
+
+    /**
+     * Checks if a mode is a registered custom mode.
+     * @param mode the mode name
+     * @return true if custom, false otherwise
+     */
+    public static boolean isCustomMode(String mode) {
+        return customModes.contains(mode);
+    }
+
+    /**
+     * Registers a new custom mode.
+     * @param mode the mode name
+     */
+    public static void registerCustomMode(String mode) {
+        customModes.add(mode);
+    }
+
+    /**
+     * Returns a list of all mode names (enum and custom).
+     * @return list of all mode names
+     */
+    public static List<String> getAllModes() {
+        List<String> all = new ArrayList<>();
+        for (TransportMode tm : TransportMode.values()) {
+            all.add(tm.name());
+        }
+        all.addAll(customModes);
+        return all;
+    }
 }
+
