@@ -66,7 +66,7 @@ public class Athletes
     
     /**
      * Calculate this athlete’s calories for one activity.
-     * (You may also add a static method to sum across all activities.)
+     * 
      */
     public int calculateBurnedCalories(Activities activity){
         int cals = activity.getCaloriesPerDistance();
