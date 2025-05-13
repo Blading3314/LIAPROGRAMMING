@@ -1,55 +1,74 @@
 import java.util.*;
-/**
- * Write a description of class Athletes here.
- *
- * @author (your name)
- * @version (a version number or a date)
- */
+
 public class Athletes
 {
-   private String name;
-   private String lastName;
-   private Gender gender;
-   private int yearOfBirth;
-   private int caloriesBurned;
-   private static List<Athletes> allAthletes = new ArrayList<>(); 
-   /**
-     * Constructor for objects of class Athletes
-     */
-    public Athletes(String name,String lastName, Gender gender,int yearOfBirth)
+    // 1) Fields
+    private String name;
+    private String lastName;
+    private Gender gender;
+    private int yearOfBirth;
+    private int caloriesBurned;
+    private static List<Athletes> allAthletes = new ArrayList<>();
+
+    // 2) Constructor
+    public Athletes(String name, String lastName, Gender gender, int yearOfBirth)
     {
-       this.name = name;
-       this.lastName = lastName;
-       this.yearOfBirth = yearOfBirth;
-       this.gender = gender;
-       allAthletes.add(this);
-    }
-   
-   public static void listAllAthletes(){
-    for(Athletes athlete : allAthletes){
-        System.out.println( athlete );
-    }
-}
-    
-   @Override
-   public String toString(){
-        return "Name: " + name + " " + lastName + "\n" + 
-        "Gender: " + gender + "\n" +
-        "Year of birth: " + yearOfBirth + "\n";
-    }
-   
-   public Gender getGender()
-    {
-       return gender;
-    }
-   
-    
-   public void setGender(Gender gender){
+        this.name = name;
+        this.lastName = lastName;
         this.gender = gender;
-    } 
+        this.yearOfBirth = yearOfBirth;
+        allAthletes.add(this);
+    }
+
+    // 3) Public getters/setters
+    public String getFirstName() {
+        return name;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    /** Full name convenience */
+    public String getName() {
+        return name + " " + lastName;
+    }
+
+    public void setCaloriesBurned(int calories) {
+        this.caloriesBurned = calories;
+    }
+
     
-   public int calculateBurnedCalories(Activities activity){
-        caloriesBurned = activity.getCaloriesPerDistance();
-        return caloriesBurned;
-    }  
+    @Override //ensure no compiler error
+    public String toString(){
+        return "Name: " + name + " " + lastName + "\n" +
+               "Gender: " + gender + "\n" +
+               "Year of birth: " + yearOfBirth + "\n" +
+               "Calories burned: " + caloriesBurned;
+    }
+
+    // 5) Static helpers
+    /** Print all profiles */
+    public static void listAllAthletes(){
+        for (Athletes athlete : allAthletes) {
+            System.out.println(athlete);
+            System.out.println();
+        }
+    }
+
+    /** Return the master list for other classes to use */
+    public static List<Athletes> getAllAthletes() {
+        return allAthletes;
+    }
+
+    
+    /**
+     * Calculate this athlete’s calories for one activity.
+     * (You may also add a static method to sum across all activities.)
+     */
+    public int calculateBurnedCalories(Activities activity){
+        int cals = activity.getCaloriesPerDistance();
+        this.caloriesBurned += cals;
+        return cals;
+    }
 }

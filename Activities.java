@@ -1,53 +1,60 @@
 import java.util.*;
-public class Activities
-{
-    // instance variables - replace the example below with your own
+
+public class Activities {
     protected TransportMode mode;
     protected String activityName;
     protected int caloriesLost;
     protected int caloriesPerDistance;
     protected int distance;
-    protected ArrayList<Athletes> athletes;
-    protected static ArrayList<Activities> allActivities = new ArrayList<Activities>();;
+    protected List<Athletes> athletes;
+    protected static List<Activities> allActivities = new ArrayList<>();
+
     /**
      * Constructor for objects of class Activities
      */
-    public Activities(String activityName, TransportMode mode, int caloriesPerDistance, int distance)
-    {
+    public Activities(String activityName, TransportMode mode, int caloriesPerDistance, int distance) {
         this.activityName = activityName;
         this.mode = mode;
         this.caloriesPerDistance = caloriesPerDistance;
         this.distance = distance;
-        athletes = new ArrayList<>();
+        this.athletes = new ArrayList<>();
         allActivities.add(this);
-        }
-    
-    public int getCaloriesPerDistance()
-    {
+    }
+
+    /**
+     * Calculates total calories for this activity (calories per unit * distance)
+     */
+    public int getCaloriesPerDistance() {
         caloriesLost = caloriesPerDistance * distance;
         return caloriesLost;
     }
-    
-    public void setAthlete(Athletes athlete)
-    {
+
+    /**
+     * Associates an athlete with this activity
+     */
+    public void setAthlete(Athletes athlete) {
         athletes.add(athlete);
     }
-    
-    public static void listActivities()
-    {
-        for(Activities activity : allActivities)
-        {
+
+    /**
+     * List all activity names
+     */
+    public static void listActivities() {
+        for (Activities activity : allActivities) {
             System.out.println(activity.activityName);
         }
     }
-    
+
+    /**
+     * List activities grouped by transport mode
+     */
     public static void listActivitiesByTransportMode() {
-        for (TransportMode mode : TransportMode.values()) {
-            System.out.println("Transport Mode: " + mode);
+        for (TransportMode m : TransportMode.values()) {
+            System.out.println("Transport Mode: " + m);
             boolean found = false;
-            for (Activities activity : allActivities) {
-                if (activity.mode == mode) {
-                    System.out.println("  - " + activity.activityName);
+            for (Activities a : allActivities) {
+                if (a.mode == m) {
+                    System.out.println("  - " + a.activityName);
                     found = true;
                 }
             }
@@ -56,34 +63,98 @@ public class Activities
             }
         }
     }
-    
+
+    /**
+     * Detailed listing of each activity by mode, including calories and athlete count
+     */
     public static void listActivitiesDetails() {
-    for (TransportMode mode : TransportMode.values()) {
-        System.out.println("Transport Mode: " + mode);
-        boolean found = false;
-        for (Activities activity : allActivities) {
-            if (activity.mode == mode) {
-                System.out.println("  - Activity: " + activity.activityName);
-                System.out.println("    Distance: " + activity.distance + " units");
-                System.out.println("    Calories per Unit: " + activity.caloriesPerDistance);
-                System.out.println("    Total Calories Lost: " + activity.getCaloriesPerDistance());
-                System.out.println("    Athletes: " + activity.athletes.size());
-                found = true;
+        for (TransportMode m : TransportMode.values()) {
+            System.out.println("Transport Mode: " + m);
+            boolean found = false;
+            for (Activities a : allActivities) {
+                if (a.mode == m) {
+                    System.out.println("  - Activity: " + a.activityName);
+                    System.out.println("    Distance: " + a.distance + " km");
+                    System.out.println("    Calories per km: " + a.caloriesPerDistance);
+                    System.out.println("    Total Calories Lost: " + a.getCaloriesPerDistance());
+                    System.out.println("    Athletes: " + a.athletes.size());
+                    found = true;
+                }
+            }
+            if (!found) {
+                System.out.println("  No activities.");
             }
         }
-        if (!found) {
-            System.out.println("  No activities.");
+    }
+
+    @Override
+    public String toString() {
+        return String.format(
+            "Activity: %s%nMode: %s%nDistance: %d%nCalories/km: %d",
+            activityName, mode, distance, caloriesPerDistance
+        );
+    }
+
+    /**
+     * Sum of the calories for a specific athlete over all their activities
+     */
+    public static int calculateCaloriesByAthlete(Athletes athlete) {
+        int total = 0;
+        for (Activities a : allActivities) {
+            if (a.athletes.contains(athlete)) {
+                total += a.getCaloriesPerDistance();
+            }
+        }
+        return total;
+    }
+
+    /**
+     * Sum calories for all activities regardless of athlete
+     */
+    public static int calculateTotalCaloriesAll() {
+        int total = 0;
+        for (Activities a : allActivities) {
+            total += a.getCaloriesPerDistance();
+        }
+        return total;
+    }
+
+    /**
+     * List activities performed by a given athlete, showing units, total calories and their distance
+     */
+        public static void listActivitiesByAthlete(Athletes athlete) {
+        System.out.println("Activities for " + athlete.getName() + ":");
+        int totalDist = 0;
+        for (Activities a : allActivities) {
+        if (a.athletes.contains(athlete)) {
+            System.out.printf(" - %s: %d km%n", a.activityName, a.distance);
+            totalDist += a.distance;
+        }
+        }
+        if (totalDist == 0) {
+        System.out.println("   (none)");
+        } else {
+        System.out.println("Total distance: " + totalDist + " km");
         }
     }
-}
-@Override
-public String toString() {
-    return String.format(
-        "Activity: %s%n" +
-        "Mode: %s%n" +
-        "Distance: %d%n" +
-        "Calories/unit: %d",
-        activityName, mode, distance, caloriesPerDistance
-    );
-}
+    
+        public static int calculateDistanceByAthlete(Athletes athlete) {
+        int total = 0;
+        for (Activities a : allActivities) {
+        if (a.athletes.contains(athlete)) {
+            total += a.distance;
+        }
+        }
+        return total;
+    }
+            public static int calculateTotalDistanceAll() {
+        int total = 0;
+        for (Activities a : allActivities) {
+        total += a.distance;
+        }
+            return total;
+    }
+        public static List<Activities> getAllActivities() {
+        return allActivities;
+    }
 }
