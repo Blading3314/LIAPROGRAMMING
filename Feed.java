@@ -120,7 +120,7 @@ public class Feed
                     // List all registered equipment
                     listEquipment();
                     break;
-                case 5: {
+                case 5: 
                     // Create a new activity (can be powered or not)
                     System.out.print("What would you like to call this activity? ");
                     String actName = mainFeed.nextLine();
@@ -184,20 +184,27 @@ public class Feed
                         }
                         System.out.print("Enter equipment name: ");
                         String equipmentName = mainFeed.nextLine();
-                        System.out.println(); // Add blank line for clarity
-
+                        System.out.println();
+                        
                         // Register new equipment if needed
                         if (ValidEquipment.getByName(equipmentName) == null) {
                             System.out.println("New equipment. Registering it now");
                             ValidEquipment.register(equipmentName);
                         }
-
-                        // Create powered activity with combined constructor
-                        newAct = new PoweredActivity(actName, mode, cals, dist, equipmentName);
-                    } else {
-                        // Create regular activity with combined constructor
-                        newAct = new Activity(actName, mode, cals, dist);
-                    }
+                        
+                            
+                        if (mode instanceof TransportMode) {
+                            newAct = new PoweredActivity(actName, (TransportMode) mode, cals, dist, equipmentName);
+                        } else {
+                            newAct = new PoweredActivity(actName, (String) mode, cals, dist, equipmentName);
+                        }
+                        } else {
+                            if (mode instanceof TransportMode) {
+                                newAct = new Activity(actName, (TransportMode) mode, cals, dist);
+                            } else {
+                                newAct = new Activity(actName, (String) mode, cals, dist);
+                            }
+                        }
 
                     // Assign the activity to an athlete
                     List<Athlete> athList = Athlete.getAllAthletes();
@@ -211,7 +218,7 @@ public class Feed
                     newAct.setAthlete(athList.get(ai - 1));
 
                     System.out.println("Created activity: " + newAct);
-                } break;
+                 break;
                 case 6:
                     // List all activity names
                     System.out.println("\n--- All Activities (Names Only) ---");

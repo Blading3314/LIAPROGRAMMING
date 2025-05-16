@@ -1,4 +1,4 @@
 #BlueJ class context
 comment0.target=Gender
-comment0.text=\r\n\ Enumeration\ class\ Gender\ -\ Holds\ the\ three\ genders\ an\ instance\ of\ the\ athletes's\ class\ can\ have\r\n
+comment0.text=\r\n\ The\ Gender\ enumeration\ represents\ the\ possible\ gender\ identities\r\n\ that\ can\ be\ assigned\ to\ an\ athlete\ in\ this\ program.\r\n\ \r\n\ This\ helps\ categorize\ athletes\ and\ allows\ the\ program\ to\ store\r\n\ and\ display\ gender\ information\ in\ a\ consistent\ way.\r\n\ \r\n\ You\ can\ choose\ from\:\r\n\ -\ MALE\r\n\ -\ FEMALE\r\n\ -\ OTHER\ (for\ any\ identity\ not\ covered\ by\ the\ first\ two\ options)\r\n
 numComments=1

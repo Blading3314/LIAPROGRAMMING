@@ -1,17 +1,19 @@
 #BlueJ class context
 comment0.target=ValidEquipment
-comment0.text=\r\n\ Represents\ a\ piece\ of\ equipment.\ \ Clients\ can\ register\ new\ equipment\r\n\ names\ at\ runtime\ or\ look\ up\ existing\ ones.\r\n
+comment0.text=\r\n\ The\ ValidEquipment\ class\ represents\ a\ piece\ of\ equipment\ that\ can\ be\ used\ in\ an\ activity,\r\n\ such\ as\ a\ bike,\ treadmill,\ or\ soccer\ ball.\r\n\ \r\n\ All\ equipment\ is\ managed\ in\ a\ central\ registry,\ so\ you\ can\ look\ up,\ add,\ or\ list\ equipment\r\n\ by\ name.\ Equipment\ names\ are\ case-insensitive\ and\ stored\ in\ a\ consistent\ way.\r\n\ \r\n\ This\ class\ provides\ methods\ to\:\r\n\ -\ Register\ new\ equipment\ (if\ it\ doesn't\ already\ exist)\r\n\ -\ Look\ up\ equipment\ by\ name\r\n\ -\ List\ all\ registered\ equipment\r\n\ \r\n\ Example\ usage\:\r\n\ \ \ ValidEquipment.register("Bike");\r\n\ \ \ ValidEquipment.getByName("bike");\r\n\ \ \ ValidEquipment.allNames();\r\n
 comment1.params=name
 comment1.target=ValidEquipment(java.lang.String)
+comment1.text=\r\n\ Private\ constructor.\ Use\ {@link\ \#register(String)}\ or\ {@link\ \#getByName(String)}\r\n\ to\ obtain\ instances.\r\n\r\n\ @param\ name\ the\ equipment\ name\ to\ store\r\n
 comment2.params=name
 comment2.target=ValidEquipment\ register(java.lang.String)
-comment2.text=\ \r\n\ Register\ a\ new\ equipment\ (if\ not\ already\ present),\ returning\ its\ instance.\r\n\ Name\ matching\ is\ case-insensitive.\r\n
+comment2.text=\r\n\ Registers\ a\ new\ piece\ of\ equipment,\ or\ returns\ the\ existing\ one\ if\ already\ registered.\r\n\ Name\ matching\ is\ case-insensitive\ and\ ignores\ extra\ spaces.\r\n\ @param\ name\ The\ equipment\ name\ to\ register\r\n\ @return\ The\ ValidEquipment\ instance\ for\ the\ given\ name\r\n
 comment3.params=name
 comment3.target=ValidEquipment\ getByName(java.lang.String)
-comment3.text=\r\n\ Lookup\ an\ equipment\ by\ name;\ returns\ null\ if\ none\ registered.\r\n
+comment3.text=\r\n\ Looks\ up\ an\ equipment\ by\ name\ (case-insensitive).\r\n\ @param\ name\ The\ equipment\ name\ to\ look\ up\r\n\ @return\ The\ ValidEquipment\ instance,\ or\ null\ if\ not\ found\r\n
 comment4.params=
 comment4.target=java.util.Set\ allNames()
-comment4.text=\r\n\ @return\ a\ read-only\ set\ of\ all\ registered\ equipment\ names.\r\n
+comment4.text=\r\n\ Returns\ a\ set\ of\ all\ registered\ equipment\ names\ (in\ uppercase).\r\n\ @return\ An\ unmodifiable\ set\ of\ equipment\ names\r\n
 comment5.params=
 comment5.target=java.lang.String\ toString()
+comment5.text=\r\n\ Returns\ the\ original\ name\ of\ this\ equipment\ as\ registered.\r\n
 numComments=6

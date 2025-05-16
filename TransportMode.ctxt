@@ -1,4 +1,4 @@
 #BlueJ class context
 comment0.target=TransportMode
-comment0.text=\r\n\ Enumeration\ representing\ various\ modes\ of\ transport\ for\ an\ activity.\r\n\ \r\n\ This\ enum\ is\ used\ to\ classify\ the\ type\ of\ movement\ associated\ with\ an\r\n\ activity,\ which\ can\ help\ in\ grouping\ and\ filtering.\r\n\ \r\n
+comment0.text=\r\n\ The\ TransportMode\ enumeration\ lists\ the\ standard\ ways\ a\ person\r\n\ can\ move\ during\ an\ activity\ in\ this\ program.\r\n\ \r\n\ This\ allows\ the\ program\ to\ keep\ track\ of\ how\ each\ activity\ was\ performed,\r\n\ and\ to\ group\ or\ compare\ activities\ by\ their\ mode\ of\ transport.\r\n\ \r\n\ The\ available\ options\ are\:\r\n\ -\ WALKING\r\n\ -\ RUNNING\r\n\ -\ BIKING\r\n\ -\ SWIMMING\r\n\ -\ SKATING\r\n\ \r\n\ If\ an\ activity\ uses\ a\ different\ mode\ (like\ 'SCOOTERING'),\ you\ can\ add\ it\ as\ a\ custom\ mode\ elsewhere\ in\ the\ program.\r\n
 numComments=1

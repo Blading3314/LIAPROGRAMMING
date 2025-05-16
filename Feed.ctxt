@@ -1,10 +1,12 @@
 #BlueJ class context
 comment0.target=Feed
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ MainApp\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ The\ Feed\ class\ is\ the\ main\ entry\ point\ for\ the\ sports\ app.\r\n\ It\ provides\ a\ menu-driven\ interface\ for\ users\ to\ create\ and\ manage\ athletes,\ activities,\ and\ equipment.\r\n\ Users\ can\ also\ view\ statistics\ and\ details\ about\ their\ activities.\r\n\r\n\ This\ class\ is\ designed\ to\ be\ beginner-friendly,\ with\ comments\ explaining\ each\ step.\r\n
 comment1.params=args
 comment1.target=void\ main(java.lang.String[])
 comment2.params=scanner
 comment2.target=void\ createEquipment(java.util.Scanner)
+comment2.text=\r\n\ Prompts\ the\ user\ to\ enter\ a\ new\ equipment\ name\ and\ registers\ it.\r\n\ This\ method\ is\ called\ when\ the\ user\ selects\ the\ menu\ option\ to\ create\ equipment.\r\n
 comment3.params=
 comment3.target=void\ listEquipment()
+comment3.text=\r\n\ Lists\ all\ registered\ equipment.\r\n\ This\ method\ is\ called\ when\ the\ user\ selects\ the\ menu\ option\ to\ list\ equipment.\r\n
 numComments=4

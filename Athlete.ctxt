@@ -1,0 +1,26 @@
+#BlueJ class context
+comment0.target=Athlete
+comment0.text=\r\n\ Class\ that\ creates\ and\ holds\ the\ athletes's\ informations\r\n
+comment1.params=name\ lastName\ gender\ yearOfBirth
+comment1.target=Athlete(java.lang.String,\ java.lang.String,\ Gender,\ int)
+comment2.params=
+comment2.target=java.lang.String\ getFirstName()
+comment3.params=
+comment3.target=java.lang.String\ getLastName()
+comment4.params=
+comment4.target=java.lang.String\ getName()
+comment4.text=Full\ name\ convenience
+comment5.params=calories
+comment5.target=void\ setCaloriesBurned(int)
+comment6.params=
+comment6.target=java.lang.String\ toString()
+comment7.params=
+comment7.target=void\ listAllAthletes()
+comment7.text=Print\ all\ profiles
+comment8.params=
+comment8.target=java.util.List\ getAllAthletes()
+comment8.text=Return\ the\ master\ list\ for\ other\ classes\ to\ use
+comment9.params=activity
+comment9.target=int\ calculateBurnedCalories(Activity)
+comment9.text=\r\n\ Calculate\ this\ athlete\u2019s\ calories\ for\ one\ activity.\r\n\ \r\n
+numComments=10

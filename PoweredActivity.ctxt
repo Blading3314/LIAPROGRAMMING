@@ -1,0 +1,22 @@
+#BlueJ class context
+comment0.target=PoweredActivity
+comment0.text=\r\n\ The\ PoweredActivity\ class\ represents\ an\ activity\ that\ uses\ a\ specific\ piece\ of\ equipment,\r\n\ such\ as\ biking\ with\ a\ bike\ or\ running\ on\ a\ treadmill.\r\n\ \r\n\ This\ class\ extends\ Activity\ and\ adds\ information\ about\ the\ equipment\ used.\r\n\ If\ the\ equipment\ is\ not\ already\ registered,\ it\ will\ be\ added\ automatically.\r\n\ \r\n\ PoweredActivity\ helps\ track\ which\ activities\ use\ which\ equipment,\ and\ provides\r\n\ methods\ to\ get\ details\ about\ the\ equipment\ for\ each\ activity.\r\n
+comment1.params=name\ mode\ caloriesPerDistance\ distance\ equipmentName
+comment1.target=PoweredActivity(java.lang.String,\ TransportMode,\ int,\ int,\ java.lang.String)
+comment1.text=\r\n\ Creates\ a\ powered\ activity\ using\ either\ a\ built-in\ or\ custom\ transport\ mode.\r\n\ If\ the\ equipment\ is\ not\ already\ registered,\ it\ will\ be\ added\ automatically.\r\n\ @param\ name\ The\ name\ of\ the\ activity\ (e.g.,\ "Biking")\r\n\ @param\ mode\ The\ transport\ mode\ (enum\ or\ custom\ string)\r\n\ @param\ caloriesPerDistance\ Calories\ burned\ per\ unit\ distance\r\n\ @param\ distance\ The\ total\ distance\ for\ the\ activity\r\n\ @param\ equipmentName\ The\ name\ of\ the\ equipment\ used\ (e.g.,\ "Bike")\r\n
+comment2.params=name\ customMode\ caloriesPerDistance\ distance\ equipmentName
+comment2.target=PoweredActivity(java.lang.String,\ java.lang.String,\ int,\ int,\ java.lang.String)
+comment3.params=equipmentName
+comment3.target=void\ initEquipment(java.lang.String)
+comment3.text=Find\ the\ equipment\ by\ name\ or\ add\ it\ if\ new,\ then\ save\ it\ here.
+comment4.params=
+comment4.target=ValidEquipment\ getEquipment()
+comment4.text=Returns\ the\ equipment\ used\ for\ this\ powered\ activity.
+comment5.params=
+comment5.target=java.lang.String\ toString()
+comment5.text=Returns\ a\ string\ describing\ this\ powered\ activity,\ including\ the\ equipment\ used.
+comment6.params=
+comment6.target=int\ hashCode()
+comment7.params=obj
+comment7.target=boolean\ equals(java.lang.Object)
+numComments=8

@@ -24,20 +24,32 @@ public class PoweredActivity extends Activity {
      * @param equipmentName The name of the equipment used (e.g., "Bike")
      */
     public PoweredActivity(String name,
-                          Object mode,
-                          int caloriesPerDistance,
-                          int distance,
-                          String equipmentName) {
+                           TransportMode mode,
+                           int caloriesPerDistance,
+                           int distance,
+                           String equipmentName) {
         super(name, mode, caloriesPerDistance, distance);
-        
-        // Look up or register the equipment
+        initEquipment(equipmentName);
+    }
+
+    public PoweredActivity(String name,
+                           String customMode,
+                           int caloriesPerDistance,
+                           int distance,
+                           String equipmentName) {
+        super(name, customMode, caloriesPerDistance, distance);
+        initEquipment(equipmentName);
+    }
+    
+    /** Find the equipment by name or add it if new, then save it here.*/
+    private void initEquipment(String equipmentName) {
         ValidEquipment eq = ValidEquipment.getByName(equipmentName);
         if (eq == null) {
             System.out.printf("'%s' was not a known equipment; registering it now.%n", equipmentName);
             eq = ValidEquipment.register(equipmentName);
         }
         this.equipment = eq;
-        System.out.println("Created PoweredActivity → " + this);
+        System.out.println("Created PoweredActivity " + this);
     }
 
     /** Returns the equipment used for this powered activity. */
