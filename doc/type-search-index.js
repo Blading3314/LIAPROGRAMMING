@@ -1,0 +1,1 @@
+typeSearchIndex = [{"p":"<Unnamed>","l":"Activity"},{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"<Unnamed>","l":"Athlete"},{"p":"<Unnamed>","l":"Feed"},{"p":"<Unnamed>","l":"Gender"},{"p":"<Unnamed>","l":"PoweredActivity"},{"p":"<Unnamed>","l":"TransportMode"},{"p":"<Unnamed>","l":"ValidEquipment"}];updateSearchResults();
