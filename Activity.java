@@ -1,3 +1,5 @@
+
+import java.util.*;
 /**
  * The Activities class represents a physical activity performed by athletes.
  * It supports both built-in (enum) and user-defined (custom) transport modes,
@@ -6,8 +8,6 @@
  * Activities are tracked globally in a static list, and can be queried,
  * listed, and analyzed by various criteria (mode, athlete, calories, etc).
  */
-import java.util.*;
-
 public class Activity {
     /**
      * The transport mode for this activity (enum, or null if custom).
